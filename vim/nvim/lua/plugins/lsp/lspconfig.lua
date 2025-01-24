@@ -16,7 +16,7 @@ local lspconfig = {
 			ensure_installed = {
 				-- "rust_analyzer",
 				"ts_ls",
-				"omnisharp",
+				-- "omnisharp",
 				"lua_ls",
 			},
 			automatic_installation = true,
@@ -64,13 +64,13 @@ local lspconfig = {
 						completions = { completeFunctionCalls = true },
 				},
 			},
-			omnisharp = {
-				filetypes = { "cs" },
-				capabilities = capabilities,
-				on_attach = on_attach,
-				cmd = { "omnisharp" },
-				root_dir = lspconfig.util.root_pattern(".sln", ".csproj", ".git"),
-			},
+			-- omnisharp = {
+			-- 	filetypes = { "cs" },
+			-- 	capabilities = capabilities,
+			-- 	on_attach = on_attach,
+			-- 	cmd = { "omnisharp" },
+			-- 	root_dir = lspconfig.util.root_pattern(".sln", ".csproj", ".git"),
+			-- },
 			lua_ls = {
 				filetypes = { "lua" },
 				capabilities = capabilities,

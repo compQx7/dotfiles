@@ -2,6 +2,18 @@
 
 ## Windows
 
+Scoop
+
+```sh
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -scope CurrentUser
+Invoke-RestMethod -Uri https://get.scoop.sh | Invoke-Expression
+```
+
+```sh
+Scoop install git 7zip neovim fzf delta
+scoop install vscode nvm
+```
+
 ### NeoVim
 
 ```sh
@@ -45,7 +57,7 @@ Install Homebrew
 Install tools
 
 ```sh
-brew install neovim asdf ripgrep fd ghq peco lazygit
+brew install neovim asdf ripgrep fd ghq peco lazygit git-delta
 ```
 
 [asdf getting started](https://asdf-vm.com/guide/getting-started.html)
@@ -55,6 +67,7 @@ Clone dotfiles
 ```sh
 ghq get {compQx7/dotfiles}
 sudo ln -s ~/ghq/github.com/compQx7/dotfiles/vim/nvim ~/.config
+sudo ln -s ~/ghq/github.com/compQx7/dotfiles/git/lazygit ~/.config
 sudo ln -s ~/ghq/github.com/compQx7/dotfiles/linux/.bashrc ~
 ```
 

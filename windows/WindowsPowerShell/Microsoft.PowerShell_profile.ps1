@@ -3,7 +3,7 @@ Set-Alias lg lazygit
 Set-Alias make mingw32-make
 
 function repo {
-    $selection = ghq list -p | peco
+    $selection = ghq list -p | fzf
     if ([string]::IsNullOrWhiteSpace($selection)) {
         Write-Output "No selection made. Exiting."
         return
@@ -12,7 +12,7 @@ function repo {
 }
 
 function repocode {
-    $selection = ghq list -p | peco
+    $selection = ghq list -p | fzf
     if ([string]::IsNullOrWhiteSpace($selection)) {
         Write-Output "No selection made. Exiting."
         return
@@ -21,7 +21,7 @@ function repocode {
 }
 
 function repovi {
-    $selection = ghq list -p | peco
+    $selection = ghq list -p | fzf
     if ([string]::IsNullOrWhiteSpace($selection)) {
         Write-Output "No selection made. Exiting."
         return

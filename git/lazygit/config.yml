@@ -5,9 +5,15 @@
 #   universal:
 #     nextBlock: <c-j>
 #     prevBlock: <c-k>
-# git:
-#   allBranchesLogCmd: git log --graph --color=always --date=format:'%Y-%m-%d %H:%M:%S'
-#   branchLogCmd: git log --graph --color=always --date=format:'%Y-%m-%d %H:%M:%S'
+git:
+  paging:
+    colorArg: always
+    pager: delta --dark --paging=never --line-numbers
+  allBranchesLogCmd: git log --graph --color=always --date=format:'%Y-%m-%d %H:%M:%S'
+  branchLogCmd: git log --graph --color=always --date=format:'%Y-%m-%d %H:%M:%S'
 gui:
+  language: "en"
   nerdFontsVersion: "3"
+os:
+  editPreset: "nvim-remote"
 
