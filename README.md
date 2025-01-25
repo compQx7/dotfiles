@@ -71,3 +71,10 @@ sudo ln -s ~/ghq/github.com/compQx7/dotfiles/git/lazygit ~/.config
 sudo ln -s ~/ghq/github.com/compQx7/dotfiles/linux/.bashrc ~
 ```
 
+```sh
+asdf list all golang
+asdf plugin add golang XXXXXX.git
+asdf install golang latest
+asdf global golang latest
+```
+

@@ -118,11 +118,24 @@ alias vim="nvim"
 alias lg="lazygit"
 alias repo="cd ~/ghq/\$(ghq list | fzf)"
 
+alias hist="history"
+alias histf="history | fzf"
+
+alias do="docker"
+alias doc="docker container"
 alias docl="docker container ls"
 alias doce="docker container exec -it"
+alias doi="docker image"
 alias doil="docker image ls"
+alias don="docker network"
+alias dov="docker volume"
+alias dc="docker compose"
 alias dcu="docker compose up -d"
 alias dcd="docker compose down"
+
+alias gst="git status"
+alias gb="git branch"
+alias gl="git log"
 
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
