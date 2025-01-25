@@ -121,7 +121,6 @@ alias repo="cd ~/ghq/\$(ghq list | fzf)"
 alias hist="history"
 alias histf="history | fzf"
 
-alias do="docker"
 alias doc="docker container"
 alias docl="docker container ls"
 alias doce="docker container exec -it"

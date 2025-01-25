@@ -1,20 +1,25 @@
 # TODO
 
+- wsl中心に使うので、react, rust, go, python, のtest, lsp, task runner 環境を整える。
+- gh でリポジトリ検索、ghq で取得、リポジトリ調査環境
+
+- signature tree は lspsaga で代用できる？
+- telescope の代替として fzf-lua を検討
+- 候補選択を tab で行うのはやめる
+- space は分かりやすくしたい（indent-blankline が邪魔している？）
+- WSL2設定ファイルの管理
+- wsl の ~/.config で他に管理するものある？
+
 - 初期化スクリプト作成
   - 実行しなくとも手順書になる
-- wsl の ~/.config
-
-- WSL2設定
-- log repository を分離
 
 - Git環境
-  - git log --graph 調査
   - diffview のみやすさ向上
   - vscode git graph のように複数ブランチの動きや進んでいるリモートブランチを把握したい
+    - `git log --all` +a
   - 数コミット前からの変更を左側に表示したい
     - Gitsigns の changebase が巨大リポジトリでうまくいかない
       - diffview も同様
-  - プレビューを見やすくできないか、diffviewでなんとかするか、diffview少し遅いのが気になる
 
 - プロジェクトごとに追加プラグインや追加設定ができると良い
   - dotfiles にセットを用意するか、プロジェクトルートに設定を配置
@@ -33,14 +38,14 @@
 - プロジェクト全体での置換
 - 汎用的なdiffを見たい。.diffファイルを開けないか。
 
-- Ghost text (like Rust)
-
 - linterの検討, aleとの比較
   - mfussenegger/nvim-lint
 
-- keymap
-  - 一か所にまとめる？
-  - description を追加したい
+- main branch
+  - keymap 一か所にするなど統一
+  - `'` -> `"`
+  - keymap description
+  - Japanese -> English
 
 - fold の活用
 - quickfix の活用
