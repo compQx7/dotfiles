@@ -1,8 +1,9 @@
 vim.api.nvim_set_var('mapleader', ' ')
 
---vim.opt.relativenumber = true
 vim.opt.clipboard = "unnamedplus"
 vim.opt.swapfile = false
+vim.opt.signcolumn = 'yes'
+vim.opt.laststatus = 3
 
 vim.opt.ignorecase = true
 vim.opt.smartcase = true

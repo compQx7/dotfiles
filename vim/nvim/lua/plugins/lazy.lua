@@ -36,7 +36,7 @@ local plugins = {
 	-- edit
 	require('plugins/edit/autopairs'),
 	require('plugins/edit/dial'),
-	require('plugins/edit/hop'),
+	require('plugins/edit/flash'),
 	require('plugins/edit/nvim-surround'),
 	require('plugins/edit/treesj'),
 	require('plugins/edit/cursorword'),
@@ -71,6 +71,7 @@ local plugins = {
 	require('plugins/ui/lualine'),
 	require('plugins/ui/render-markdown'),
 	require('plugins/ui/dressing'),
+	require('plugins/ui/winsep'),
 
 	-- require('folke/which-key.nvim'),
 }
