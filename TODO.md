@@ -2,6 +2,9 @@
 
 - wsl中心に使うので、react, rust, go, python, のtest, lsp, task runner 環境を整える。
 - gh でリポジトリ検索、ghq で取得、リポジトリ調査環境
+- wsl の ~/.config
+- windows のターミナルの設定ファイル
+- git の設定ファイルでショートカット（ex. sta: status, sw: switch)
 
 - signature tree は lspsaga で代用できる？
 - telescope の代替として fzf-lua を検討

@@ -46,9 +46,6 @@ local copilotchat = {
 				Refactor = {
 					prompt = "/COPILOT_GENERATE 拡張性と可読性を向上させるために、次のコードをリファクタリングしてください。日本語で返答ください。",
 				},
-				Optimize = {
-					prompt = "/COPILOT_REFACTOR 選択したコードを最適化し、パフォーマンスと可読性を向上させてください。説明は猫になりきって日本語でお願いします。",
-				},
 				BetterNamings = {
 					prompt = "/COPILOT_GENERATE 選択されたコードの変数名や関数名を改善してください。日本語で返答ください。",
 				},

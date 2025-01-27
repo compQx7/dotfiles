@@ -7,10 +7,23 @@ local plug = {
 	config = function()
 		local overseer = require("overseer")
 
+		-- overseer/template 以下にあるフォルダ名一覧を取得
+		local function get_template_folders()
+			local template_path = vim.fn.stdpath('config') .. '/lua/overseer/template'
+			local folders = {}
+			for _, folder in ipairs(vim.fn.readdir(template_path)) do
+				if vim.fn.isdirectory(template_path .. '/' .. folder) == 1 then
+					table.insert(folders, folder)
+				end
+			end
+			return folders
+		end
+		local templates = get_template_folders()
+
 		overseer.setup({
 			templates = {
 				'builtin',
-				'rust',
+				unpack(templates),
 			},
 			task_list = {
         direction = "right",
