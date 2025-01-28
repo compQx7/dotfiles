@@ -112,15 +112,6 @@ fi
 # my_setting
 eval $(dircolors -b ~/.dircolors)
 
-alias python="python3"
-alias pip="pip3"
-alias vim="nvim"
-alias lg="lazygit"
-alias repo="cd ~/ghq/\$(ghq list | fzf)"
-
-alias hist="history"
-alias histf="history | fzf"
-
 alias doc="docker container"
 alias docl="docker container ls"
 alias doce="docker container exec -it"
@@ -131,10 +122,19 @@ alias dov="docker volume"
 alias dc="docker compose"
 alias dcu="docker compose up -d"
 alias dcd="docker compose down"
-
 alias gst="git status"
 alias gb="git branch"
 alias gl="git log"
+alias hist="history"
+alias histf="history | fzf"
+alias lg="lazygit"
+alias python="python3"
+alias pip="pip3"
+alias repo="cd ~/ghq/\$(ghq list | fzf)"
+alias repovi="cd ~/ghq/\$(ghq list | fzf) && vi"
+alias tm="tmux"
+alias vi="nvim"
+alias vim="nvim"
 
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
