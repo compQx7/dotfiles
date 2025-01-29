@@ -58,25 +58,6 @@ local plug = {
 				overseer.run_action(tasks[1], "restart")
 			end
 		end, {})
-
-		overseer.register_template({
-			name = "PNPM Build with Env",
-			builder = function(params)
-			return {
-				cmd = "pnpm",
-				args = { "-F", params.package, "run", "build" },
-				-- env = {
-				-- 	NODE_ENV = params.node_env or "production", -- 環境変数
-				-- },
-				components = { "default", "on_output_quickfix" },
-			}
-			end,
-			params = {
-				package = { type = "string", name = "Package Name", optional = false },
-				-- node_env = { type = "string", name = "Node Env", optional = true },
-			},
-			description = "Run build with custom NODE_ENV",
-		})
 	end,
 }
 
