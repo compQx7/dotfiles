@@ -17,9 +17,8 @@
   - 実行しなくとも手順書になる
 
 - Git環境
+  - .gitconfig の再検討
   - diffview のみやすさ向上
-  - vscode git graph のように複数ブランチの動きや進んでいるリモートブランチを把握したい
-    - `git log --all` +a
   - 数コミット前からの変更を左側に表示したい
     - Gitsigns の changebase が巨大リポジトリでうまくいかない
       - diffview も同様

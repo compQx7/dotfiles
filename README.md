@@ -57,7 +57,7 @@ Install Homebrew
 Install tools
 
 ```sh
-brew install neovim asdf ripgrep fd ghq peco lazygit git-delta
+brew install neovim asdf ripgrep fd ghq peco lazygit git-delta tmux
 ```
 
 [asdf getting started](https://asdf-vm.com/guide/getting-started.html)
@@ -66,10 +66,13 @@ Clone dotfiles
 
 ```sh
 ghq get {compQx7/dotfiles}
-sudo ln -s ~/ghq/github.com/compQx7/dotfiles/vim/nvim ~/.config
-sudo ln -s ~/ghq/github.com/compQx7/dotfiles/git/lazygit ~/.config
 sudo ln -s ~/ghq/github.com/compQx7/dotfiles/linux/.bashrc ~
 sudo ln -s ~/ghq/github.com/compQx7/dotfiles/.tmux.conf ~
+sudo ln -s ~/ghq/github.com/compQx7/dotfiles/vim/nvim ~/.config
+# [include]
+#     path = .gitconfig.common
+sudo ln -s ~/ghq/github.com/compQx7/dotfiles/git/.gitconfig.common ~
+sudo ln -s ~/ghq/github.com/compQx7/dotfiles/git/lazygit ~/.config
 ```
 
 ```sh
