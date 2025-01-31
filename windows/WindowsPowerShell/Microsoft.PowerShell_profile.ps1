@@ -1,3 +1,4 @@
+Set-Alias vi nvim
 Set-Alias vim nvim
 Set-Alias lg lazygit
 Set-Alias make mingw32-make
