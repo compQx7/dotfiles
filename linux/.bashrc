@@ -139,3 +139,8 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 . "/home/linuxbrew/.linuxbrew/opt/asdf/libexec/asdf.sh"
 . "/home/linuxbrew/.linuxbrew/opt/asdf/etc/bash_completion.d/asdf"
 
+# Load additional settings from another file
+if [ -f ~/.bashrc.local ]; then
+	source ~/.bashrc.local
+fi
+
