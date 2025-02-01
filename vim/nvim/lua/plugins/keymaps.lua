@@ -38,7 +38,7 @@ vim.keymap.set('n', '<leader>fw', '<cmd>SessionSearch<CR>', { desc = 'Session se
 vim.keymap.set('n', '<leader>ws', '<cmd>SessionSave<CR>', { desc = 'Save session' } )
 
 -- edit
-vim.keymap.set("n", "<leader>oo", "<cmd>AerialToggle!<CR>", { desc = 'Aerial toggle' })
+vim.keymap.set("n", "gO", "<cmd>AerialToggle!<CR>", { desc = 'Aerial toggle' })
 vim.keymap.set("n", "]o", "<cmd>AerialNext<CR>", { desc = '' })
 vim.keymap.set("n", "[o", "<cmd>AerialPrev<CR>", { desc = '' })
 

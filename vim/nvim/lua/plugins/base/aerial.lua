@@ -5,7 +5,15 @@ local aerial = {
 		"nvim-tree/nvim-web-devicons"
 	},
 	config = function()
-		require('aerial').setup({})
+		require('aerial').setup({
+			layout = {
+				default_direction = "prefer_right",
+			},
+      keymaps = {
+        ["<CR>"] = "actions.jump",
+        ["l"] = "actions.jump",
+			},
+		})
 	end,
 }
 
