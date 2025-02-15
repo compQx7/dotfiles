@@ -112,27 +112,69 @@ fi
 # my_setting
 eval $(dircolors -b ~/.dircolors)
 
-alias doc="docker container"
-alias docl="docker container ls"
-alias doce="docker container exec -it"
-alias doi="docker image"
-alias doil="docker image ls"
-alias don="docker network"
-alias dov="docker volume"
+# Search the command history and expand it to the command line.
+__fzf_history() {
+	local cmd
+	cmd=$(history |
+		# Delete the numbers, sort them by newest, and output only the first one.
+		sed 's/ *[0-9]* *//' | tac | awk '!seen[$0]++' |
+		fzf --bind 'ctrl-e:accept,tab:accept')
+
+	if [[ -n $cmd ]]; then
+		READLINE_LINE="$cmd"
+		READLINE_POINT=${#cmd}
+	fi
+}
+# Assign(Override) history search to Ctrl-r.
+bind -x '"\C-r": __fzf_history'
+
+__git_commit_browser() {
+	git log --graph --color=always \
+		--format="%C(auto)%h%d %s %C(black)%C(bold)%cr" "$@" |
+	fzf --ansi --no-sort --reverse --tiebreak=index --bind=ctrl-s:toggle-sort \
+		--bind "ctrl-m:execute:
+			(grep -o '[a-f0-9]\{7\}' | head -1 |
+			xargs -I % sh -c 'git show --color=always % | less -R') << 'FZF-EOF'
+			{}
+FZF-EOF"
+}
+
+__cd_fzf() {
+	local dir
+	dir=$(find ${1:-.} -path '*/\.*' -prune \
+					-o -type d -print 2> /dev/null | fzf +m) &&
+	cd "$dir"
+}
+__cd_git_root() {
+	cd $(git rev-parse --show-toplevel)
+}
+
+alias cdf="__cd_fzf"
+alias cdr="__cd_git_root"
 alias dc="docker compose"
 alias dcu="docker compose up -d"
 alias dcd="docker compose down"
+alias doc="docker container"
+alias doce="docker container exec -it"
+alias docl="docker container ls"
+alias docr="docker container run"
+alias doi="docker image"
+alias doib="docker image build"
+alias doil="docker image ls"
+alias don="docker network"
+alias dov="docker volume"
 alias g="git"
+alias gshow="__git_commit_browser"
 alias hist="history"
 alias histf="history | fzf"
 alias lg="lazygit"
 alias python="python3"
 alias pip="pip3"
 alias repo="cd ~/ghq/\$(ghq list | fzf)"
-alias repovi="cd ~/ghq/\$(ghq list | fzf) && vi"
 alias tm="tmux"
 alias vi="nvim"
 alias vim="nvim"
+alias virepo="cd ~/ghq/\$(ghq list | fzf) && vi"
 
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
