@@ -57,7 +57,7 @@ Install Homebrew
 Install tools
 
 ```sh
-brew install neovim asdf ripgrep fd ghq peco lazygit git-delta tmux
+brew install neovim asdf ripgrep fd ghq peco lazygit git-delta tmux jq yq
 ```
 
 [asdf getting started](https://asdf-vm.com/guide/getting-started.html)

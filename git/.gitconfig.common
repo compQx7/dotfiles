@@ -9,14 +9,24 @@
 [alias]
 	a = add
 	b = branch
-	c = commit
+	cm = commit
 	cf = config
 	cfl = config -l
+	co = checkout
+	cp = cherry-pick
 	df = diff
-	graph = log --graph --all --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
-	; graph = log --graph --all --date=short --pretty=\"format:'%C(yellow)%h %C(cyan)%ad %C(green)%an%Creset%09%s %C(red)%d%Creset\"
 	l = log
+	ls = ls-files
+	m = merge
+	ms = merge --squash
+	ps = push
+	pl = pull
+	rb = rebase
 	sh = stash
 	st = status
 	sw = switch
+
+	root = rev-parse --show-toplevel
+	graph = log --graph --all --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+	; graph = log --graph --all --date=short --pretty=\"format:'%C(yellow)%h %C(cyan)%ad %C(green)%an%Creset%09%s %C(red)%d%Creset\"
 
