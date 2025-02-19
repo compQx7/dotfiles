@@ -149,6 +149,124 @@ __cd_git_root() {
 	cd $(git rev-parse --show-toplevel)
 }
 
+# -------------------------
+# 再帰的にツリー表示する内部関数
+#   _tree_with_lines <directory> <prefix> <current_depth> <max_depth> <excludes_array...>
+# -------------------------
+_tree_with_lines() {
+	local dir="$1"
+	local prefix="$2"
+	local current_depth="$3"
+	local max_depth="$4"
+	shift 4  # 上記4つをシフト
+	local excludes=("$@")  # 残りの引数を配列として受け取る (.git, node_modules など)
+
+	# ディレクトリ内の要素一覧を取得（隠しファイル含む）
+	local items=()
+	mapfile -t items < <(ls -A "$dir" 2>/dev/null || true)
+
+	local count=${#items[@]}
+	local i=0
+
+	for item in "${items[@]}"; do
+		((i++))
+		local path="$dir/$item"
+
+		# ---------- 除外チェック ----------
+		# excludes 配列に含まれていれば表示せずスキップ
+		local skip=""
+		for exc in "${excludes[@]}"; do
+			if [[ "$item" == "$exc" ]]; then
+				skip=1
+				break
+			fi
+		done
+		[ -n "$skip" ] && continue
+		# ---------------------------------
+
+		# ツリーの枝分かれ文字を設定
+		local branch="├──"
+		[ $i -eq $count ] && branch="└──"  # 最後の要素なら "└──" にする
+
+		if [ -d "$path" ]; then
+			# ディレクトリの場合は行数表示をせず、そのまま出力
+			echo "${prefix}${branch} $item"
+
+			# まだ max_depth に達していなければ下位を再帰表示
+			if [ "$current_depth" -lt "$max_depth" ]; then
+				local new_prefix="${prefix}│   "
+				[ $i -eq $count ] && new_prefix="${prefix}    "
+				_tree_with_lines "$path" "$new_prefix" $((current_depth + 1)) "$max_depth" "${excludes[@]}"
+			fi
+		else
+			# ファイルの場合は行数を取得（失敗時は 0）
+			local lines
+			lines=$(wc -l < "$path" 2>/dev/null || echo 0)
+			echo "${prefix}${branch} $item  ($lines lines)"
+		fi
+	done
+}
+
+# -------------------------
+# 公開用のラッパ関数
+#   tree_with_lines [<directory>] [<max_depth>] [--exclude <dir_to_exclude> ...]
+# -------------------------
+__tree_with_lines() {
+	local target_dir="."
+	local max_depth="1"
+
+	# デフォルトの除外リスト (.git は必ず除外)
+	local EXCLUDES=( ".git" )
+
+	# 引数解析用
+	while [ $# -gt 0 ]; do
+		case "$1" in
+			# --exclude <dir> 形式で呼ばれた場合に除外リストに追加
+			-x|--exclude)
+				if [ -n "$2" ]; then
+					EXCLUDES+=("$2")
+					shift 2
+				else
+					echo "ERROR: --exclude オプションの後に除外対象ディレクトリ名が必要です。" >&2
+					return 1
+				fi
+				;;
+			-d)
+				if [ -n "$2" ]; then
+					max_depth="$2"
+					max_depth_specified=1
+					shift 2
+				else
+					echo "ERROR: -d オプションの後にdepthが必要です。" >&2
+					return 1
+				fi
+				;;
+			# -p)
+			*)
+				if [ -n "$1" ]; then
+					target_dir="$1"
+					target_dir_specified=1
+					shift 1
+				else
+					echo "ERROR: -p オプションの後にpathが必要です。" >&2
+					return 1
+				fi
+				;;
+				# echo "警告: 不明な引数 '$1' は無視されました。" >&2
+				# shift
+				# ;;
+		esac
+	done
+
+	# 最上位ディレクトリ名を表示（必要であれば省略可）
+	echo "$target_dir"
+
+	# 階層の深さが 1 以上なら、下位を探索
+	if [ "$max_depth" -ge 1 ]; then
+		_tree_with_lines "$target_dir" "" 1 "$max_depth" "${EXCLUDES[@]}"
+	fi
+}
+
 alias cdf="__cd_fzf"
 alias cdr="__cd_git_root"
 alias dc="docker compose"
@@ -170,6 +288,7 @@ alias histf="history | fzf"
 alias lg="lazygit"
 alias repo="cd ~/ghq/\$(ghq list | fzf)"
 alias tm="tmux"
+alias tree="__tree_with_lines"
 alias vi="nvim"
 alias vim="nvim"
 alias virepo="cd ~/ghq/\$(ghq list | fzf) && vi"
