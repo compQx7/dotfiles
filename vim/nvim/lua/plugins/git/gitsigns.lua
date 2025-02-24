@@ -54,12 +54,6 @@ local gitsigns = {
 			},
 		}
 	end,
-	keys = {
-		{ mode = 'n', ']c', '<cmd>Gitsigns next_hunk<CR>zz' },
-		{ mode = 'n', '[c', '<cmd>Gitsigns prev_hunk<CR>zz' },
-		{ mode = 'n', '<Leader>hp', '<cmd>Gitsigns preview_hunk_inline<CR>' },
-		{ mode = 'n', '<Leader>hdd', '<cmd>Gitsigns reset_hunk<CR>' },
-	},
 }
 
 return gitsigns

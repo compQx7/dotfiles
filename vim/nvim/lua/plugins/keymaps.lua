@@ -42,6 +42,26 @@ vim.keymap.set("n", "gO", "<cmd>AerialToggle!<CR>", { desc = 'Aerial toggle' })
 vim.keymap.set("n", "]o", "<cmd>AerialNext<CR>", { desc = '' })
 vim.keymap.set("n", "[o", "<cmd>AerialPrev<CR>", { desc = '' })
 
+vim.keymap.set('i', '<C-y>', '<Plug>(copilot-accept-line)')
+vim.keymap.set('i', '<C-l>', '<Plug>(copilot-accept-word)')
+vim.keymap.set('i', '<M-]>', '<Plug>(copilot-next)')
+vim.keymap.set('i', '<M-[>', '<Plug>(copilot-previous)')
+vim.keymap.set('i', '<M-i>', '<Plug>(copilot-suggest)')
+
+vim.keymap.set("n", "<C-a>", require("dial.map").inc_normal(), {noremap = true})
+vim.keymap.set("n", "<C-x>", require("dial.map").dec_normal(), {noremap = true})
+vim.keymap.set("v", "<C-a>", require("dial.map").inc_visual(), {noremap = true})
+vim.keymap.set("v", "<C-x>", require("dial.map").dec_visual(), {noremap = true})
+vim.keymap.set("v", "g<C-a>", require("dial.map").inc_gvisual(), {noremap = true})
+vim.keymap.set("v", "g<C-x>", require("dial.map").dec_gvisual(), {noremap = true})
+
+vim.keymap.set({ 'n', 'x' }, 's', function() require('flash').jump() end )
+vim.keymap.set({ 'n', 'x' }, 'S', function() require('flash').jump({ continue = true }) end )
+
+vim.keymap.set('n', '<leader>M', function()
+	require('treesj').toggle({ split = { recursive = true } })
+end)
+
 -- task runner
 vim.keymap.set('n', '<Leader>to', '<cmd>OverseerToggle<CR>', { desc = '' })
 vim.keymap.set('n', '<Leader>tr', '<cmd>OverseerRun<CR>', { desc = '' })
@@ -53,6 +73,11 @@ vim.keymap.set({ "n", "x" }, "<leader>io", "<cmd>CopilotChatToggle<CR>", { norem
 vim.keymap.set("n", "<leader>ib", "<cmd>lua CopilotChatBuffer()<cr>", { noremap = true, silent = true })
 
 -- git
+vim.keymap.set( 'n', ']c', '<cmd>Gitsigns next_hunk<CR>zz' )
+vim.keymap.set( 'n', '[c', '<cmd>Gitsigns prev_hunk<CR>zz' )
+vim.keymap.set( 'n', '<Leader>hp', '<cmd>Gitsigns preview_hunk_inline<CR>' )
+vim.keymap.set( 'n', '<Leader>hdd', '<cmd>Gitsigns reset_hunk<CR>' )
+
 vim.keymap.set('n', '<Leader>hh', '<cmd>DiffviewOpen HEAD<CR>', { desc = '' })
 vim.keymap.set('n', '<Leader>hf', '<cmd>DiffviewFileHistory %<CR>', { desc = '' })
 vim.keymap.set('n', '<Leader>hc', '<cmd>DiffviewClose<CR>', { desc = '' })

@@ -25,10 +25,6 @@ local flash = {
 			highlight = { backdrop = false },
 		})
 	end,
-	keys = {
-		{ mode = { 'n', 'x' }, 's', function() require('flash').jump() end },
-		{ mode = { 'n', 'x' }, 'S', function() require('flash').jump({ continue = true }) end },
-	},
 }
 
 return flash
