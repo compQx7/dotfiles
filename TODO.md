@@ -1,11 +1,15 @@
 # TODO
 
-- wsl中心に使うので、react, rust, go, python, のtest, lsp, task runner 環境を整える。
+- react, rust, go, python, のtest, lsp, task runner 環境を整える。
+  - js環境
+    - import をコードアクションで補完したい
+    - jestのテストを個別に実行したい
+    - フロントエンド用の設定を on/off できるようにしたい
+
 - gh でリポジトリ検索、ghq で取得、リポジトリ調査環境
 - windows のターミナルの設定ファイル
 
 - 候補選択を tab で行うのはやめる
-- telescope の代替として fzf-lua を検討
 - space は分かりやすくしたい（indent-blankline が邪魔している？）
 - WSL2設定ファイルの管理
   - wsl の ~/.config で他に管理するものある？
@@ -14,19 +18,10 @@
   - 実行しなくとも手順書になる
 
 - Git環境
-  - .gitconfig の再検討
   - diffview のみやすさ向上
   - 数コミット前からの変更を左側に表示したい
     - Gitsigns の changebase が巨大リポジトリでうまくいかない
       - diffview も同様
-
-- プロジェクトごとに追加プラグインや追加設定ができると良い
-  - dotfiles にセットを用意するか、プロジェクトルートに設定を配置
-
-- js環境
-  - import をコードアクションで補完したい
-  - jestのテストを個別に実行したい
-  - フロントエンド用の設定を on/off できるようにしたい
 
 - プロジェクト全体での置換
 - 汎用的なdiffを見たい。.diffファイルを開けないか。
@@ -57,12 +52,12 @@
 
 ## plugin
 
+- telescope の代替として fzf-lua を検討
 - cssの色表現 norcalli/nvim-colorizer.lua
 - 折り畳みを見やすく anuvyklack/pretty-fold.nvim
 - 折り畳みを開かずプレビュー anuvyklack/fold-preview.nvim
 - linterの検討, aleとの比較
   - mfussenegger/nvim-lint
-
 
 ## survey
 
