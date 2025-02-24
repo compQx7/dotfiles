@@ -1,30 +1,41 @@
 # TODO
 
+## dotfiles 運用
+
+- 初期化スクリプト作成
+  - 実行しなくとも手順書になる
+
+- WSL2設定ファイルの管理
+  - wsl の ~/.config で他に管理するものある？
+  - `C:\Users\masa\AppData\Local\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json`
+    - GUIDはdotfiles管理に入れてよい？
+  - /etc/wsl.conf
+- .Brewfile
+
+## Task for main branching
+
+- keymap description
+- Japanese -> English
+
+## nvim
+
 - react, rust, go, python, のtest, lsp, task runner 環境を整える。
   - js環境
     - import をコードアクションで補完したい
     - jestのテストを個別に実行したい
     - フロントエンド用の設定を on/off できるようにしたい
 
-- gh でリポジトリ検索、ghq で取得、リポジトリ調査環境
-- windows のターミナルの設定ファイル
-
 - 候補選択を tab で行うのはやめる
 - space は分かりやすくしたい（indent-blankline が邪魔している？）
-- WSL2設定ファイルの管理
-  - wsl の ~/.config で他に管理するものある？
-
-- 初期化スクリプト作成
-  - 実行しなくとも手順書になる
+- プロジェクト全体での置換
+- 汎用的なdiffを見たい。.diffファイルを開けないか。
 
 - Git環境
   - diffview のみやすさ向上
   - 数コミット前からの変更を左側に表示したい
     - Gitsigns の changebase が巨大リポジトリでうまくいかない
       - diffview も同様
-
-- プロジェクト全体での置換
-- 汎用的なdiffを見たい。.diffファイルを開けないか。
+- gh でリポジトリ検索、ghq で取得、リポジトリ調査環境
 
 - git workflow
   - DiffviewXxxx
@@ -33,12 +44,7 @@
   - Telescope による Git 操作
   - gh コマンドなどによるレビュー
 
-## Task for main branching
-
-- keymap description
-- Japanese -> English
-
-## debug
+### debug
 
 必要な debug 機能
 
@@ -48,7 +54,7 @@
 - callstack
 - 変数の値を確認
 
-## plugin
+### plugin
 
 - telescope の代替として fzf-lua を検討
 - cssの色表現 norcalli/nvim-colorizer.lua
@@ -57,7 +63,7 @@
 - linterの検討, aleとの比較
   - mfussenegger/nvim-lint
 
-## survey
+### survey
 
 - fold の活用
 - quickfix の活用

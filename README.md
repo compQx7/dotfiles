@@ -80,3 +80,8 @@ asdf install golang latest
 asdf global golang latest
 ```
 
+## Remind
+
+- 定期的に他の dotfiles を参考に覗いて取り入れてみる。
+- tool への依存性は常に意識する。純粋な機能を大切にする。
+
