@@ -1,6 +1,6 @@
 vim.api.nvim_set_var('mapleader', ' ')
 
-vim.opt.clipboard = "unnamedplus"
+vim.opt.clipboard = 'unnamedplus'
 vim.opt.swapfile = false
 vim.opt.signcolumn = 'yes'
 vim.opt.laststatus = 3
@@ -19,7 +19,7 @@ vim.opt.winblend = 20
 -- wrap lines
 vim.opt.wrap = true
 vim.opt.breakindent = true
-vim.opt.showbreak = "↪ "
+vim.opt.showbreak = '↪ '
 
 -- indenting
 vim.opt.tabstop = 4

@@ -1,5 +1,5 @@
 VerticalLayout1 = {
-	layout_strategy = "vertical",
+	layout_strategy = 'vertical',
 	layout_config = {
 		height = 0.99,
 		preview_height = 0.6,
@@ -10,7 +10,7 @@ VerticalLayout1 = {
 	winblend = 20,
 }
 VerticalLayout2 = {
-	layout_strategy = "vertical",
+	layout_strategy = 'vertical',
 	layout_config = {
 		height = 0.99,
 		preview_height = 0.6,
@@ -41,8 +41,8 @@ VerticalLayout2 = {
 		},
 	},
 	-- path_display = function(opts, path)
-	-- 	local tail = require("telescope.utils").path_tail(path)
-	-- 	return string.format("%s (%s)", tail, path)
+	-- 	local tail = require('telescope.utils').path_tail(path)
+	-- 	return string.format('%s (%s)', tail, path)
 	-- end,
 }
 
@@ -62,7 +62,7 @@ local telescope = {
 	config = function()
 		require('telescope').setup({
 			defaults = {
-				layout_strategy = "vertical",
+				layout_strategy = 'vertical',
 				-- cache_picker = {
 				-- 	num_pickers = 1,
 				-- },
@@ -78,27 +78,27 @@ local telescope = {
 					fuzzy = true,
 					override_generic_sorter = true,
 					override_file_sorter = true,
-					case_mode = "smart_case",
+					case_mode = 'smart_case',
 				},
 			-- oilと比較（追加・削除、移動・コピーしやすいか、lsp対応のカスタマイズが必要）
 			-- 	file_browser = {
-			-- 		theme = "ivy",
+			-- 		theme = 'ivy',
 			-- 		-- disables netrw and use telescope-file-browser in its place
 			-- 		hijack_netrw = true,
 			-- 		mappings = {
-			-- 			["i"] = {
+			-- 			['i'] = {
 			-- 				-- your custom insert mode mappings
 			-- 				-- ['<C-h>'] = require('telescope').extensions.file_browser.actions.goto_parent_dir,
 			-- 				-- ['<C-l>'] = require('telescope').extensions.file_browser.actions.open_dir,
 			-- 			},
-			-- 			["n"] = {
+			-- 			['n'] = {
 			-- 				-- your custom normal mode mappings
 			-- 			},
 			-- 		},
 			-- 	},
 			},
 		})
-		-- require("telescope").load_extension("file_browser")
+		-- require('telescope').load_extension('file_browser')
 		require('telescope').load_extension('fzf')
 
 		-- local function myresume(picker_title)
@@ -146,7 +146,7 @@ local telescope = {
 		-- 			return true
 		-- 		end,
 		-- 	}
-		-- end, { desc = "Manage buffers" })
+		-- end, { desc = 'Manage buffers' })
 	end,
 }
 

@@ -14,10 +14,10 @@ local lspconfig = {
 		require('mason').setup({})
 		require('mason-lspconfig').setup({
 			ensure_installed = {
-				-- "rust_analyzer",
-				"ts_ls",
-				-- "omnisharp",
-				"lua_ls",
+				-- 'rust_analyzer',
+				'ts_ls',
+				-- 'omnisharp',
+				'lua_ls',
 			},
 			automatic_installation = true,
 		})
@@ -37,7 +37,7 @@ local lspconfig = {
 			vim.keymap.set('n', '<Leader>ae', vim.diagnostic.open_float, bufopts)
 			vim.keymap.set('n', ']g', vim.diagnostic.goto_next, bufopts)
 			vim.keymap.set('n', '[g', vim.diagnostic.goto_prev, bufopts)
-			vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+			vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(
 				vim.lsp.diagnostic.on_publish_diagnostics,
 				{ virtual_text = false }
 			)
@@ -46,18 +46,18 @@ local lspconfig = {
 		-- サーバーごとの個別設定
 		local servers = {
 			rust_analyzer = {
-				filetypes = { "rust" },
+				filetypes = { 'rust' },
 				capabilities = capabilities,
 				on_attach = on_attach,
-				-- cmd = { "/usr/local/bin/rust-analyzer" },
+				-- cmd = { '/usr/local/bin/rust-analyzer' },
 				settings = {
-						-- ["rust-analyzer"] = {
-						-- 		checkOnSave = { command = "clippy" },
+						-- ['rust-analyzer'] = {
+						-- 		checkOnSave = { command = 'clippy' },
 						-- },
 				},
 			},
 			ts_ls = {
-				filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
+				filetypes = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact' },
 				capabilities = capabilities,
 				on_attach = on_attach,
 				settings = {
@@ -65,20 +65,20 @@ local lspconfig = {
 				},
 			},
 			-- omnisharp = {
-			-- 	filetypes = { "cs" },
+			-- 	filetypes = { 'cs' },
 			-- 	capabilities = capabilities,
 			-- 	on_attach = on_attach,
-			-- 	cmd = { "omnisharp" },
-			-- 	root_dir = lspconfig.util.root_pattern(".sln", ".csproj", ".git"),
+			-- 	cmd = { 'omnisharp' },
+			-- 	root_dir = lspconfig.util.root_pattern('.sln', '.csproj', '.git'),
 			-- },
 			lua_ls = {
-				filetypes = { "lua" },
+				filetypes = { 'lua' },
 				capabilities = capabilities,
 				on_attach = on_attach,
 				settings = {
 					Lua = {
 						diagnostics = {
-							globals = { "vim" },
+							globals = { 'vim' },
 						},
 					},
 				},

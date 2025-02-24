@@ -5,7 +5,7 @@ local plug = {
 	-- 	'nvim-telescope/telescope.nvim',
 	-- },
 	config = function()
-		local overseer = require("overseer")
+		local overseer = require('overseer')
 
 		-- overseer/template 以下にあるフォルダ名一覧を取得
 		local function get_template_folders()
@@ -26,36 +26,36 @@ local plug = {
 				unpack(templates),
 			},
 			task_list = {
-        direction = "right",
+        direction = 'right',
         max_width = { 200, 0.8 },
 				bindings = {
-					["?"] = "ShowHelp",
-					-- ["<CR>"] = "RunAction",
-					-- ["<C-e>"] = "Edit",
-					-- ["o"] = "Open",
-					-- ["<C-v>"] = "OpenVsplit",
-					-- ["<C-s>"] = "OpenSplit",
-					-- ["<C-f>"] = "OpenFloat",
-					-- ["<C-q>"] = "OpenQuickFix",
-					-- ["p"] = "TogglePreview",
-					["L"] = "IncreaseDetail",
-					["H"] = "DecreaseDetail",
-					["<M-l>"] = "IncreaseAllDetail",
-					["<M-h>"] = "DecreaseAllDetail",
-					-- ["["] = "DecreaseWidth",
-					-- ["]"] = "IncreaseWidth",
-					-- ["{"] = "PrevTask",
-					-- ["}"] = "NextTask",
+					['?'] = 'ShowHelp',
+					-- ['<CR>'] = 'RunAction',
+					-- ['<C-e>'] = 'Edit',
+					-- ['o'] = 'Open',
+					-- ['<C-v>'] = 'OpenVsplit',
+					-- ['<C-s>'] = 'OpenSplit',
+					-- ['<C-f>'] = 'OpenFloat',
+					-- ['<C-q>'] = 'OpenQuickFix',
+					-- ['p'] = 'TogglePreview',
+					['L'] = 'IncreaseDetail',
+					['H'] = 'DecreaseDetail',
+					['<M-l>'] = 'IncreaseAllDetail',
+					['<M-h>'] = 'DecreaseAllDetail',
+					-- ['['] = 'DecreaseWidth',
+					-- [']'] = 'IncreaseWidth',
+					-- ['{'] = 'PrevTask',
+					-- ['}'] = 'NextTask',
 				},
 			},
 		})
 
-		vim.api.nvim_create_user_command("OverseerRestartLast", function()
+		vim.api.nvim_create_user_command('OverseerRestartLast', function()
 			local tasks = overseer.list_tasks({ recent_first = true })
 			if vim.tbl_isempty(tasks) then
-				vim.notify("No tasks found", vim.log.levels.WARN)
+				vim.notify('No tasks found', vim.log.levels.WARN)
 			else
-				overseer.run_action(tasks[1], "restart")
+				overseer.run_action(tasks[1], 'restart')
 			end
 		end, {})
 	end,

@@ -6,10 +6,10 @@ local diffview = {
 		require('diffview').setup({
 			show_help_hints = false,
 			file_panel = {
-				listing_style = "tree", -- One of 'list' or 'tree'
+				listing_style = 'tree', -- One of 'list' or 'tree'
 				tree_options = {
 					flatten_dirs = true,
-					folder_statuses = "never", -- One of 'never', 'only_folded' or 'always'.
+					folder_statuses = 'never', -- One of 'never', 'only_folded' or 'always'.
 				},
 				win_config = {
 					position = 'bottom',

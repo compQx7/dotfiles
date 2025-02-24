@@ -35,8 +35,6 @@
 
 ## Task for main branching
 
-- keymap 一か所にするなど統一
-- `'` -> `"`
 - keymap description
 - Japanese -> English
 

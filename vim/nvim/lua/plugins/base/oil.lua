@@ -14,48 +14,48 @@ local oil = {
 			keymaps = {
 				['<Leader>fn'] = {
 					function()
-							require("telescope.builtin").find_files({
-									cwd = require("oil").get_current_dir()
+							require('telescope.builtin').find_files({
+									cwd = require('oil').get_current_dir()
 							})
 					end,
-					mode = "n",
+					mode = 'n',
 					nowait = true,
-					desc = "Find files in the current directory"
+					desc = 'Find files in the current directory'
 				},
 				['<Leader>fa'] = {
 					function()
-							require("telescope.builtin").live_grep({
-									cwd = require("oil").get_current_dir()
+							require('telescope.builtin').live_grep({
+									cwd = require('oil').get_current_dir()
 							})
 					end,
-					mode = "n",
+					mode = 'n',
 					nowait = true,
-					desc = "Find files in the current directory"
+					desc = 'Find files in the current directory'
 				},
 				['<C-t>'] = {
 					function()
-						local curdir = require("oil").get_current_dir()
+						local curdir = require('oil').get_current_dir()
 						if curdir then
-							vim.cmd("ToggleTerm dir=" .. curdir)
+							vim.cmd('ToggleTerm dir=' .. curdir)
 						end
 					end,
-					mode = "n",
+					mode = 'n',
 					nowait = true,
-					desc = "Open terminal at the current directory"
+					desc = 'Open terminal at the current directory'
 				},
 				['<Leader>l'] = {
 					function()
-						require("oil").select()
+						require('oil').select()
 					end,
-					mode = "n",
+					mode = 'n',
 					nowait = true,
-					desc = "Open terminal at the current directory"
+					desc = 'Open terminal at the current directory'
 				},
 				['<Leader>h'] = {
 					'actions.parent',
-					mode = "n",
+					mode = 'n',
 					nowait = true,
-					desc = "Open terminal at the current directory"
+					desc = 'Open terminal at the current directory'
 				},
 			},
 		})

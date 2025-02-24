@@ -1,7 +1,7 @@
 local plug = {
 	'stevearc/dressing.nvim',
 	config = function()
-		require("dressing").setup({})
+		require('dressing').setup({})
 	end,
 }
 

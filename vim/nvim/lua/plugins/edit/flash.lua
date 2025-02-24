@@ -11,16 +11,16 @@ local flash = {
         -- * fun(str): custom function that returns a pattern
         --   For example, to only match at the beginning of a word:
         --   mode = function(str)
-        --     return "\\<" .. str
+        --     return '\\<' .. str
         --   end,
 				mode = 'exact',
 			},
 			label = {
-        reuse = "none", ---@type "lowercase" | "all" | "none"
+        reuse = 'none', ---@type 'lowercase' | 'all' | 'none'
         -- for the current window, label targets closer to the cursor first
         distance = true,
         -- position of the label extmark
-        style = "overlay", ---@type "eol" | "overlay" | "right_align" | "inline"
+        style = 'overlay', ---@type 'eol' | 'overlay' | 'right_align' | 'inline'
 			},
 			highlight = { backdrop = false },
 		})

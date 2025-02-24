@@ -1,12 +1,12 @@
 -- filer
 local oil = require('oil')
-vim.keymap.set("n", "<Space>fe", function()
-	-- require("oil").toggle_float()
+vim.keymap.set('n', '<Space>fe', function()
+	-- require('oil').toggle_float()
 	oil.open()
-end, { desc = "Oil current buffer's directory" })
-vim.keymap.set("n", "<Space>fE", function()
-	oil.open(".")
-end, { desc = "Oil ." })
+end, { desc = 'Oil current buffer\'s directory' })
+vim.keymap.set('n', '<Space>fE', function()
+	oil.open('.')
+end, { desc = 'Oil .' })
 
 -- buffer
 vim.keymap.set('n', '<C-n>', '<cmd>BufferLineCycleNext<CR>')
@@ -38,9 +38,9 @@ vim.keymap.set('n', '<leader>fw', '<cmd>SessionSearch<CR>', { desc = 'Session se
 vim.keymap.set('n', '<leader>ws', '<cmd>SessionSave<CR>', { desc = 'Save session' } )
 
 -- edit
-vim.keymap.set("n", "gO", "<cmd>AerialToggle!<CR>", { desc = 'Aerial toggle' })
-vim.keymap.set("n", "]o", "<cmd>AerialNext<CR>", { desc = '' })
-vim.keymap.set("n", "[o", "<cmd>AerialPrev<CR>", { desc = '' })
+vim.keymap.set('n', 'gO', '<cmd>AerialToggle!<CR>', { desc = 'Aerial toggle' })
+vim.keymap.set('n', ']o', '<cmd>AerialNext<CR>', { desc = '' })
+vim.keymap.set('n', '[o', '<cmd>AerialPrev<CR>', { desc = '' })
 
 vim.keymap.set('i', '<C-y>', '<Plug>(copilot-accept-line)')
 vim.keymap.set('i', '<C-l>', '<Plug>(copilot-accept-word)')
@@ -48,12 +48,12 @@ vim.keymap.set('i', '<M-]>', '<Plug>(copilot-next)')
 vim.keymap.set('i', '<M-[>', '<Plug>(copilot-previous)')
 vim.keymap.set('i', '<M-i>', '<Plug>(copilot-suggest)')
 
-vim.keymap.set("n", "<C-a>", require("dial.map").inc_normal(), {noremap = true})
-vim.keymap.set("n", "<C-x>", require("dial.map").dec_normal(), {noremap = true})
-vim.keymap.set("v", "<C-a>", require("dial.map").inc_visual(), {noremap = true})
-vim.keymap.set("v", "<C-x>", require("dial.map").dec_visual(), {noremap = true})
-vim.keymap.set("v", "g<C-a>", require("dial.map").inc_gvisual(), {noremap = true})
-vim.keymap.set("v", "g<C-x>", require("dial.map").dec_gvisual(), {noremap = true})
+vim.keymap.set('n', '<C-a>', require('dial.map').inc_normal(), {noremap = true})
+vim.keymap.set('n', '<C-x>', require('dial.map').dec_normal(), {noremap = true})
+vim.keymap.set('v', '<C-a>', require('dial.map').inc_visual(), {noremap = true})
+vim.keymap.set('v', '<C-x>', require('dial.map').dec_visual(), {noremap = true})
+vim.keymap.set('v', 'g<C-a>', require('dial.map').inc_gvisual(), {noremap = true})
+vim.keymap.set('v', 'g<C-x>', require('dial.map').dec_gvisual(), {noremap = true})
 
 vim.keymap.set({ 'n', 'x' }, 's', function() require('flash').jump() end )
 vim.keymap.set({ 'n', 'x' }, 'S', function() require('flash').jump({ continue = true }) end )
@@ -68,9 +68,9 @@ vim.keymap.set('n', '<Leader>tr', '<cmd>OverseerRun<CR>', { desc = '' })
 vim.keymap.set('n', '<Leader>tl', '<cmd>OverseerRestartLast<CR>', { desc = '' })
 
 -- ai
-vim.keymap.set({ "n", "x" }, "<leader>ip", "<cmd>ShowCopilotChatActionPrompt<cr>", { noremap = true, silent = true })
-vim.keymap.set({ "n", "x" }, "<leader>io", "<cmd>CopilotChatToggle<CR>", { noremap = true, silent = true })
-vim.keymap.set("n", "<leader>ib", "<cmd>lua CopilotChatBuffer()<cr>", { noremap = true, silent = true })
+vim.keymap.set({ 'n', 'x' }, '<leader>ip', '<cmd>ShowCopilotChatActionPrompt<cr>', { noremap = true, silent = true })
+vim.keymap.set({ 'n', 'x' }, '<leader>io', '<cmd>CopilotChatToggle<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>ib', '<cmd>lua CopilotChatBuffer()<cr>', { noremap = true, silent = true })
 
 -- git
 vim.keymap.set( 'n', ']c', '<cmd>Gitsigns next_hunk<CR>zz' )

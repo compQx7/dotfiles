@@ -11,7 +11,7 @@ local cmp = {
 	},
 	event = {'InsertEnter'},
 	config = function()
-		local cmp = require("cmp")
+		local cmp = require('cmp')
 		local types = require('cmp.types')
 		local luasnip = require('luasnip')
 
@@ -25,20 +25,20 @@ local cmp = {
 				end,
 			},
 			sources = cmp.config.sources({
-				{ name = "nvim_lsp" },
-				{ name = "luasnip" },
+				{ name = 'nvim_lsp' },
+				{ name = 'luasnip' },
 			}, {
-				{ name = "buffer" },
-				{ name = "path" },
+				{ name = 'buffer' },
+				{ name = 'path' },
 			}),
 			mapping = cmp.mapping.preset.insert({
-				["<C-n>"] = cmp.mapping.select_next_item(),
-				["<C-p>"] = cmp.mapping.select_prev_item(),
-				["<C-d>"] = cmp.mapping.scroll_docs(-5),
-				["<C-u>"] = cmp.mapping.scroll_docs(5),
+				['<C-n>'] = cmp.mapping.select_next_item(),
+				['<C-p>'] = cmp.mapping.select_prev_item(),
+				['<C-d>'] = cmp.mapping.scroll_docs(-5),
+				['<C-u>'] = cmp.mapping.scroll_docs(5),
 				-- ['<C-.>'] = cmp.mapping.complete(),
 				['<C-e>'] = cmp.mapping.abort(),
-				["<CR>"] = cmp.mapping.confirm { select = true },
+				['<CR>'] = cmp.mapping.confirm { select = true },
 				-- ['<Tab>'] = cmp.mapping.select_next_item({ behavior = types.cmp.SelectBehavior.Insert }),
 				-- ['<S-Tab>'] = cmp.mapping.select_prev_item({ behavior = types.cmp.SelectBehavior.Insert }),
 				['<Tab>'] = cmp.mapping(function(fallback)
@@ -77,11 +77,11 @@ local cmp = {
 				{ name = 'buffer' }
 			},
 		})
-		cmp.setup.cmdline(":", {
+		cmp.setup.cmdline(':', {
 			mapping = cmp.mapping.preset.cmdline(),
 			sources = {
-				{ name = "path" },
-				{ name = "cmdline" },
+				{ name = 'path' },
+				{ name = 'cmdline' },
 			},
 		})
 	end,
