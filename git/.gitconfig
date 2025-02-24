@@ -30,3 +30,6 @@
 	graph = log --graph --all --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 	; graph = log --graph --all --date=short --pretty=\"format:'%C(yellow)%h %C(cyan)%ad %C(green)%an%Creset%09%s %C(red)%d%Creset\"
 
+[include]
+	path = ~/.gitconfig.local
+

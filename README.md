@@ -69,9 +69,7 @@ ghq get {compQx7/dotfiles}
 sudo ln -s ~/ghq/github.com/compQx7/dotfiles/linux/.bashrc ~
 sudo ln -s ~/ghq/github.com/compQx7/dotfiles/.tmux.conf ~
 sudo ln -s ~/ghq/github.com/compQx7/dotfiles/vim/nvim ~/.config
-# [include]
-#     path = .gitconfig.common
-sudo ln -s ~/ghq/github.com/compQx7/dotfiles/git/.gitconfig.common ~
+sudo ln -s ~/ghq/github.com/compQx7/dotfiles/git/.gitconfig ~
 sudo ln -s ~/ghq/github.com/compQx7/dotfiles/git/lazygit ~/.config
 ```
 
