@@ -118,7 +118,7 @@ __fzf_history() {
 	cmd=$(history |
 		# Delete the numbers, sort them by newest, and output only the first one.
 		sed 's/ *[0-9]* *//' | tac | awk '!seen[$0]++' |
-		fzf --bind 'ctrl-e:accept,tab:accept')
+		fzf --no-sort --reverse --bind=ctrl-s:toggle-sort --bind 'ctrl-e:accept,tab:accept')
 
 	if [[ -n $cmd ]]; then
 		READLINE_LINE="$cmd"
@@ -130,11 +130,11 @@ bind -x '"\C-r": __fzf_history'
 
 __git_commit_browser() {
 	git log --graph --color=always \
-		--format="%C(auto)%h%d %s %C(black)%C(bold)%cr" "$@" |
+		--format="%C(red)%h %C(green)(%cd)%C(yellow)%d %C(reset)%s %C(bold blue)<%an>%C(reset)" --date=format:'%Y-%m-%d %H:%M:%S' "$@" |
 	fzf --ansi --no-sort --reverse --tiebreak=index --bind=ctrl-s:toggle-sort \
 		--bind "ctrl-m:execute:
 			(grep -o '[a-f0-9]\{7\}' | head -1 |
-			xargs -I % sh -c 'git show --color=always % | less -R') << 'FZF-EOF'
+			xargs -I % bash -c 'git show % | delta | less -R') << 'FZF-EOF'
 			{}
 FZF-EOF"
 }
@@ -231,7 +231,7 @@ __tree_with_lines() {
 					return 1
 				fi
 				;;
-			-d)
+			-d|--depth)
 				if [ -n "$2" ]; then
 					max_depth="$2"
 					max_depth_specified=1
@@ -241,7 +241,6 @@ __tree_with_lines() {
 					return 1
 				fi
 				;;
-			# -p)
 			*)
 				if [ -n "$1" ]; then
 					target_dir="$1"
@@ -252,9 +251,6 @@ __tree_with_lines() {
 					return 1
 				fi
 				;;
-				# echo "警告: 不明な引数 '$1' は無視されました。" >&2
-				# shift
-				# ;;
 		esac
 	done
 
@@ -266,6 +262,9 @@ __tree_with_lines() {
 		_tree_with_lines "$target_dir" "" 1 "$max_depth" "${EXCLUDES[@]}"
 	fi
 }
+
+# default less options
+export LESS='-i -M -R'
 
 alias cdf="__cd_fzf"
 alias cdr="__cd_git_root"
@@ -284,14 +283,13 @@ alias dov="docker volume"
 alias g="git"
 alias gshow="__git_commit_browser"
 alias hist="history"
-alias histf="history | fzf"
 alias lg="lazygit"
-alias repo="cd ~/ghq/\$(ghq list | fzf)"
+alias repo="cd ~/ghq/\$(ghq list | fzf --reverse)"
 alias tm="tmux"
 alias tree="__tree_with_lines"
 alias vi="nvim"
 alias vim="nvim"
-alias virepo="cd ~/ghq/\$(ghq list | fzf) && vi"
+alias virepo="cd ~/ghq/\$(ghq list | fzf --reverse) && vi"
 
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
