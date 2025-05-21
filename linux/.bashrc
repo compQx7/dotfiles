@@ -293,8 +293,9 @@ alias virepo="cd ~/ghq/\$(ghq list | fzf --reverse) && vi"
 
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
-. "/home/linuxbrew/.linuxbrew/opt/asdf/libexec/asdf.sh"
-. "/home/linuxbrew/.linuxbrew/opt/asdf/etc/bash_completion.d/asdf"
+# . "/home/linuxbrew/.linuxbrew/opt/asdf/libexec/asdf.sh"
+# . "/home/linuxbrew/.linuxbrew/opt/asdf/etc/bash_completion.d/asdf"
+eval "$(mise activate bash)"
 
 # Load additional settings from another file
 if [ -f ~/.bashrc.local ]; then
