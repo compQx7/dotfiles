@@ -134,7 +134,19 @@ __git_commit_browser() {
 	fzf --ansi --no-sort --reverse --tiebreak=index --bind=ctrl-s:toggle-sort \
 		--bind "ctrl-m:execute:
 			(grep -o '[a-f0-9]\{7\}' | head -1 |
-			xargs -I % bash -c 'git show % | delta | less -R') << 'FZF-EOF'
+			xargs -I % sh -c 'git show % | delta | less -R') << 'FZF-EOF'
+			{}
+FZF-EOF"
+}
+
+__git_diff_browser() {
+	local args="$*"
+	git diff --name-only \
+		$args |
+	fzf --ansi --no-sort --reverse --tiebreak=index --bind=ctrl-s:toggle-sort \
+		--bind "ctrl-m:execute:
+			(head -1 |
+			xargs -I % sh -c 'git diff $args -- \"%\" | delta | less -R') << 'FZF-EOF'
 			{}
 FZF-EOF"
 }
@@ -267,10 +279,12 @@ __tree_with_lines() {
 export LESS='-i -M -R'
 
 alias cdf="__cd_fzf"
+alias cdh="cd ~"
 alias cdr="__cd_git_root"
 alias dc="docker compose"
 alias dcu="docker compose up -d"
 alias dcd="docker compose down"
+alias dirs="dirs -v"
 alias doc="docker container"
 alias doce="docker container exec -it"
 alias docl="docker container ls"
@@ -284,12 +298,22 @@ alias g="git"
 alias gshow="__git_commit_browser"
 alias hist="history"
 alias lg="lazygit"
+alias gd="pushd"
+alias gdf="__git_diff_browser"
+alias ghs="gh search"
+alias ghsr="gh search repos --sort=stars --order=desc"
+alias pd="popd"
 alias repo="cd ~/ghq/\$(ghq list | fzf --reverse)"
 alias tm="tmux"
 alias tree="__tree_with_lines"
 alias vi="nvim"
 alias vim="nvim"
 alias virepo="cd ~/ghq/\$(ghq list | fzf --reverse) && vi"
+
+EDITOR=vi
+
+# コマンドライン編集をviモードで行う
+# set -o vi
 
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
