@@ -6,6 +6,7 @@ local autosession = {
 	lazy = false,
 	config = function()
 		require('auto-session').setup({
+			auto_create = false,
 			session_lens = {
 				-- If load_on_setup is false, make sure you use `:SessionSearch` to open the picker as it will initialize everything first
 				load_on_setup = true,

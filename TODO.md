@@ -19,12 +19,18 @@
 
 ## nvim
 
+- isolate lazy code (plugin file should be write only plugin config)
+- neovim in vscode + keymaps.json
+- neovim 0.11 + update lsp setting
+- mise + manage the lsp
+- add `mise.local.toml` in global gitignore
 - react, rust, go, python, のtest, lsp, task runner 環境を整える。
   - js環境
     - import をコードアクションで補完したい
     - jestのテストを個別に実行したい
     - フロントエンド用の設定を on/off できるようにしたい
 
+- sql file is treated as binary in git
 - 候補選択を tab で行うのはやめる
 - space は分かりやすくしたい（indent-blankline が邪魔している？）
 - プロジェクト全体での置換

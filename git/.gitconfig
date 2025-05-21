@@ -33,6 +33,7 @@
 	line-numbers = true
 	diff-so-fancy=true
 	keep-plus-minus-markers=true
+	hyperlinks = true
 
 [include]
 	path = ~/.gitconfig.local
