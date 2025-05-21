@@ -2,38 +2,19 @@
 
 ## Windows
 
-Scoop
+### 前提
 
-```sh
-Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -scope CurrentUser
-Invoke-RestMethod -Uri https://get.scoop.sh | Invoke-Expression
+- Git がインストールされていること
+- PowerShell 7 以上
+
+[PowerShell 7](https://learn.microsoft.com/ja-jp/powershell/scripting/whats-new/migrating-from-windows-powershell-51-to-powershell-7?view=powershell-7.4)
+
+```ps1
+winget install --id Microsoft.PowerShell --source winget
 ```
 
-```sh
-Scoop install git 7zip neovim fzf delta
-scoop install vscode nvm
-```
-
-### NeoVim
-
-```sh
-# 管理者権限でコマンドプロンプトを開いて以下を実行する
-mklink /d %USERPROFILE%\AppData\Local\nvim %USERPROFILE%\ghq\github.com\compQx7\dotfiles\vim\nvim\
-```
-
-### PowerShell
-
-```sh
-# 管理者権限でコマンドプロンプトを開いて以下を実行する
-mklink /d %USERPROFILE%\Documents\WindowsPowerShell %USERPROFILE%\ghq\github.com\compQx7\dotfiles\windows\WindowsPowerShell
-```
-
-### other
-
-lazygit
-```sh
-mklink /d %USERPROFILE%\AppData\Local\lazygit %USERPROFILE%\ghq\github.com\compQx7\dotfiles\git\lazygit\
-```
+1. Clone this repository.
+2. Run the install script.
 
 ## Linux
 
@@ -57,7 +38,7 @@ Install Homebrew
 Install tools
 
 ```sh
-brew install neovim asdf ripgrep fd ghq peco lazygit git-delta tmux jq yq
+brew install neovim asdf ripgrep fd ghq fzf lazygit git-delta tmux jq yq
 ```
 
 [asdf getting started](https://asdf-vm.com/guide/getting-started.html)
