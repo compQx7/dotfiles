@@ -34,43 +34,43 @@ local copilotchat = {
 			},
 			prompts = {
 				Explain = {
-					prompt = '/COPILOT_EXPLAIN 選択されたコードの説明を段落をつけて書いてください。',
+					prompt = '/COPILOT_EXPLAIN Please write a paragraph explaining the code I have selected. Please reply in Japanese.',
 				},
 				Review = {
-					prompt = '/COPILOT_REVIEW 選択されたコードをレビューしてください。',
+					prompt = '/COPILOT_REVIEW Review the selected code. Please reply in Japanese.',
 					callback = function(response, source) end,
 				},
 				Fix = {
-					prompt = '/COPILOT_FIX このコードには問題があります。バグを修正したコードに書き直してください。',
+					prompt = '/COPILOT_FIX This code has a problem. Please rewrite it to fix the bug.',
 				},
 				Refactor = {
-					prompt = '/COPILOT_GENERATE 拡張性と可読性を向上させるために、次のコードをリファクタリングしてください。日本語で返答ください。',
+					prompt = '/COPILOT_GENERATE Please refactor the following code to improve its scalability and readability.',
 				},
 				BetterNamings = {
-					prompt = '/COPILOT_GENERATE 選択されたコードの変数名や関数名を改善してください。日本語で返答ください。',
+					prompt = '/COPILOT_GENERATE Please improve the variable and function names in the selected code.',
 				},
 				Optimize = {
-					prompt = '/COPILOT_REFACTOR 選択されたコードを最適化してパフォーマンスと可読性を向上させてください。',
+					prompt = '/COPILOT_REFACTOR Optimize selected code to improve performance and readability.',
 				},
 				Docs = {
-					prompt = '/COPILOT_DOCS 選択されたコードに対してドキュメンテーションコメントを追加してください。',
+					prompt = '/COPILOT_DOCS Add documentation comments to selected code.',
 				},
 				Tests = {
-					prompt = '/COPILOT_TESTS 選択されたコードの詳細な単体テスト関数を書いてください。',
+					prompt = '/COPILOT_TESTS Write detailed unit test functions for selected code.',
 				},
 				Summarize = {
-					prompt = '/COPILOT_GENERATE 選択範囲の要約を書いてください。日本語で返答ください。',
+					prompt = '/COPILOT_GENERATE Please write a summary of your selection. Please reply in Japanese.',
 				},
 				FixDiagnostic = {
-					prompt = 'ファイル内の次のような診断上の問題を解決してください:',
+					prompt = 'Please diagnose problems like the following in the file:',
 					selection = select.diagnostics,
 				},
 				Commit = {
-					prompt = '変更のコミットメッセージをcommitizenの規約に従って日本語で書いてください。タイトルは最大50文字、メッセージは72文字で折り返してください。メッセージ全体をgitcommit言語のコードブロックで囲んでください。',
+					prompt = 'Please write the commit message of the change in Japanese according to the commitizen rules. The title should be a maximum of 50 characters, and the message should be wrapped at 72 characters. Enclose the entire message in a code block in the gitcommit language.',
 					selection = select.gitdiff,
 				},
 				CommitStaged = {
-					prompt = '変更のコミットメッセージをcommitizenの規約に従って日本語で書いてください。タイトルは最大50文字、メッセージは72文字で折り返してください。メッセージ全体をgitcommit言語のコードブロックで囲んでください。',
+					prompt = 'Please write the commit message of the change in Japanese according to the commitizen rules. The title should be a maximum of 50 characters, and the message should be wrapped at 72 characters. Enclose the entire message in a code block in the gitcommit language.',
 					selection = function(source)
 						local select = require('CopilotChat.select')
 						return select.gitdiff(source, true)

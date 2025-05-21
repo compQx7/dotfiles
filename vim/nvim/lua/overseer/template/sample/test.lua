@@ -7,7 +7,7 @@ return {
 			cmd = 'pnpm',
 			args = { '-F', params.package, 'run', 'test' },
 			-- env = {
-			-- 	NODE_ENV = params.node_env or 'production', -- 環境変数
+			-- 	NODE_ENV = params.node_env or 'production',
 			-- },
 			cwd = find_file_path('Cargo.toml', false),
 			components = {
@@ -17,7 +17,7 @@ return {
 				{ 'display_duration' },
 			},
 			-- on_complete = function(task)
-			-- 	vim.notify('タスクが完了しました: ' .. task.name, vim.log.levels.INFO)
+			-- 	vim.notify('Task Completed: ' .. task.name, vim.log.levels.INFO)
 			-- end,
 		}
 	end,
@@ -33,7 +33,7 @@ return {
 	condition = {
 		-- filetype = { 'rs' },
 		callback = function()
-			-- Cargo.toml が存在する場合にのみタスクを有効化
+			-- Enable the task only if Cargo.toml exists
 			local path = find_file_path('Cargo.toml', false)
 			return path
 		end,

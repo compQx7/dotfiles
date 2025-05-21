@@ -20,10 +20,10 @@ diff the current file with the last commit.
 
 ## Insert mode
 
-レジスタの貼り付け
+Paste register
 `<C-r>"`
 
-クリップボードの貼り付け
+Clipboard Paste
 `<C-r>+`
 
 ## filer

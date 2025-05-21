@@ -22,7 +22,7 @@ local lspconfig = {
 			automatic_installation = true,
 		})
 
-		-- LSP補完のための設定
+		-- Settings for LSP Complement
 		local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 		local on_attach = function(client, bufnr)
@@ -43,7 +43,7 @@ local lspconfig = {
 			)
 		end
 
-		-- サーバーごとの個別設定
+		-- Individual settings for each server
 		local servers = {
 			rust_analyzer = {
 				filetypes = { 'rust' },
@@ -85,7 +85,7 @@ local lspconfig = {
 			}
 		}
 
-		-- 各サーバーの設定を適用
+		-- Apply settings for each server
 		for server, opts in pairs(servers) do
 				opts = opts or {}
 				lspconfig[server].setup(opts)

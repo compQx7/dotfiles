@@ -15,14 +15,14 @@ return {
 			},
 			-- cmd = { 'echo', 'Hello, World!' },
 			-- on_complete = function(task)
-			-- 	vim.notify('タスクが完了しました: ' .. task.name, vim.log.levels.INFO)
+			-- 	vim.notify('Task Completed: ' .. task.name, vim.log.levels.INFO)
 			-- end,
 		}
 	end,
 	condition = {
 		-- filetype = { 'rs' },
 		callback = function()
-			-- Cargo.toml が存在する場合にのみタスクを有効化
+			-- Enable the task only if Cargo.toml exists
 			local path = find_file_path('Cargo.toml', false)
 			return path
 		end,

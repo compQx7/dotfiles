@@ -162,7 +162,7 @@ __cd_git_root() {
 }
 
 # -------------------------
-# 再帰的にツリー表示する内部関数
+# Private function for recursive tree display
 #   _tree_with_lines <directory> <prefix> <current_depth> <max_depth> <excludes_array...>
 # -------------------------
 _tree_with_lines() {
@@ -170,10 +170,10 @@ _tree_with_lines() {
 	local prefix="$2"
 	local current_depth="$3"
 	local max_depth="$4"
-	shift 4  # 上記4つをシフト
-	local excludes=("$@")  # 残りの引数を配列として受け取る (.git, node_modules など)
+	shift 4
+	local excludes=("$@")  # Rest arguments as an array (.git, node_modules, etc.)
 
-	# ディレクトリ内の要素一覧を取得（隠しファイル含む）
+	# Get a list of elements in a directory (including hidden files)
 	local items=()
 	mapfile -t items < <(ls -A "$dir" 2>/dev/null || true)
 
@@ -184,8 +184,8 @@ _tree_with_lines() {
 		((i++))
 		local path="$dir/$item"
 
-		# ---------- 除外チェック ----------
-		# excludes 配列に含まれていれば表示せずスキップ
+		# ---------- Exclusion Check ----------
+		# If it is included in the excludes array, it will be skipped.
 		local skip=""
 		for exc in "${excludes[@]}"; do
 			if [[ "$item" == "$exc" ]]; then
@@ -196,22 +196,22 @@ _tree_with_lines() {
 		[ -n "$skip" ] && continue
 		# ---------------------------------
 
-		# ツリーの枝分かれ文字を設定
+		# Set the tree branch characters
 		local branch="├──"
-		[ $i -eq $count ] && branch="└──"  # 最後の要素なら "└──" にする
+		[ $i -eq $count ] && branch="└──"  # If it is the last element, use "└──"
 
 		if [ -d "$path" ]; then
-			# ディレクトリの場合は行数表示をせず、そのまま出力
+			# In the case of a directory, the line number is not displayed and the output is as is.
 			echo "${prefix}${branch} $item"
 
-			# まだ max_depth に達していなければ下位を再帰表示
+			# If max_depth has not been reached yet, recurse down
 			if [ "$current_depth" -lt "$max_depth" ]; then
 				local new_prefix="${prefix}│   "
 				[ $i -eq $count ] && new_prefix="${prefix}    "
 				_tree_with_lines "$path" "$new_prefix" $((current_depth + 1)) "$max_depth" "${excludes[@]}"
 			fi
 		else
-			# ファイルの場合は行数を取得（失敗時は 0）
+			# If it is a file, get the number of lines (0 on failure)
 			local lines
 			lines=$(wc -l < "$path" 2>/dev/null || echo 0)
 			echo "${prefix}${branch} $item  ($lines lines)"
@@ -220,26 +220,26 @@ _tree_with_lines() {
 }
 
 # -------------------------
-# 公開用のラッパ関数
+# 
 #   tree_with_lines [<directory>] [<max_depth>] [--exclude <dir_to_exclude> ...]
 # -------------------------
 __tree_with_lines() {
 	local target_dir="."
 	local max_depth="1"
 
-	# デフォルトの除外リスト (.git は必ず除外)
+	# Default exclusion list
 	local EXCLUDES=( ".git" )
 
-	# 引数解析用
+	# For argument analysis
 	while [ $# -gt 0 ]; do
 		case "$1" in
-			# --exclude <dir> 形式で呼ばれた場合に除外リストに追加
+			# Add to the exclude list when called with the --exclude <dir> form
 			-x|--exclude)
 				if [ -n "$2" ]; then
 					EXCLUDES+=("$2")
 					shift 2
 				else
-					echo "ERROR: --exclude オプションの後に除外対象ディレクトリ名が必要です。" >&2
+					echo "ERROR: The --exclude option must be followed by the name of the directory to be excluded." >&2
 					return 1
 				fi
 				;;
@@ -249,7 +249,7 @@ __tree_with_lines() {
 					max_depth_specified=1
 					shift 2
 				else
-					echo "ERROR: -d オプションの後にdepthが必要です。" >&2
+					echo "ERROR: The -d option is required followed by depth." >&2
 					return 1
 				fi
 				;;
@@ -259,17 +259,17 @@ __tree_with_lines() {
 					target_dir_specified=1
 					shift 1
 				else
-					echo "ERROR: -p オプションの後にpathが必要です。" >&2
+					echo "ERROR: The -p option must be followed by a path." >&2
 					return 1
 				fi
 				;;
 		esac
 	done
 
-	# 最上位ディレクトリ名を表示（必要であれば省略可）
+	# Show top-level directory name (optional if necessary)
 	echo "$target_dir"
 
-	# 階層の深さが 1 以上なら、下位を探索
+	# If the hierarchy depth is 1 or more, search below
 	if [ "$max_depth" -ge 1 ]; then
 		_tree_with_lines "$target_dir" "" 1 "$max_depth" "${EXCLUDES[@]}"
 	fi
@@ -312,7 +312,7 @@ alias virepo="cd ~/ghq/\$(ghq list | fzf --reverse) && vi"
 
 EDITOR=vi
 
-# コマンドライン編集をviモードで行う
+# Command line editing in vi mode
 # set -o vi
 
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"

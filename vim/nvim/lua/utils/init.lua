@@ -1,11 +1,11 @@
--- 汎用関数
+-- utility functions
 
 local M = {}
 
 -- local is_vscode = vim.g.vscode
 M.is_vscode = vim.fn.exists('g:vscode') == 1
 
---- Searches for a specified file by traversing up the directory tree from the current buffer's directory.
+-- Searches for a specified file by traversing up the directory tree from the current buffer's directory.
 -- @param file_name The name of the file to search for.
 -- @param include_file_name Boolean indicating whether to include the file name in the returned path.
 -- @return The path to the directory containing the file, or the full file path if include_file_name is true. Returns nil if the file is not found.

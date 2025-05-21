@@ -7,7 +7,7 @@ local plug = {
 	config = function()
 		local overseer = require('overseer')
 
-		-- overseer/template 以下にあるフォルダ名一覧を取得
+		-- Get a list of folder names under overseer/template
 		local function get_template_folders()
 			local template_path = vim.fn.stdpath('config') .. '/lua/overseer/template'
 			local folders = {}

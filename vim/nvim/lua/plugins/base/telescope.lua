@@ -20,7 +20,7 @@ VerticalLayout2 = {
 	},
 	winblend = 20,
 	file_ignore_patterns = {
-		-- TODO: escape の記法はこれで良い？
+		-- TODO: Is this the correct escape notation?
 		'^.git',
 		-- '.cache',
 		'node_modules',
@@ -51,10 +51,10 @@ local telescope = {
 	branch = '0.1.x',
 	dependencies = {
 		'nvim-lua/plenary.nvim',
-		{
-			'nvim-telescope/telescope-fzf-native.nvim',
-			build = 'make',
-		},
+		-- {
+		-- 	'nvim-telescope/telescope-fzf-native.nvim',
+		-- 	build = 'make',
+		-- },
 		-- 'nvim-telescope/telescope-file-browser.nvim',
 	},
 	cmd = 'Telescope',
@@ -74,13 +74,13 @@ local telescope = {
 				buffers = VerticalLayout2,
 			},
 			extensions = {
-				fzf = {
-					fuzzy = true,
-					override_generic_sorter = true,
-					override_file_sorter = true,
-					case_mode = 'smart_case',
-				},
-			-- oilと比較（追加・削除、移動・コピーしやすいか、lsp対応のカスタマイズが必要）
+				-- fzf = {
+				-- 	fuzzy = true,
+				-- 	override_generic_sorter = true,
+				-- 	override_file_sorter = true,
+				-- 	case_mode = 'smart_case',
+				-- },
+			-- Compare with oil (Easy to add/delete, move/copy, needs customization for LSP)
 			-- 	file_browser = {
 			-- 		theme = 'ivy',
 			-- 		-- disables netrw and use telescope-file-browser in its place
@@ -99,7 +99,7 @@ local telescope = {
 			},
 		})
 		-- require('telescope').load_extension('file_browser')
-		require('telescope').load_extension('fzf')
+		-- require('telescope').load_extension('fzf')
 
 		-- local function myresume(picker_title)
 		-- 	local cached_pickers = require('telescope.state').get_global_key('cached_pickers')

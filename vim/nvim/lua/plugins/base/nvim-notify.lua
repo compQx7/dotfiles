@@ -2,13 +2,13 @@ local plug = {
   'rcarriga/nvim-notify',
 	config = function()
 		require('notify').setup({
-			-- stages = 'slide', -- 通知のアニメーションスタイル
-			stages = 'fade_in_slide_out', -- 通知のアニメーションスタイル
-			timeout = 4000,  -- 通知の表示時間 (ミリ秒)
-			background_colour = '#1e222a',  -- 背景色を設定
-			render = 'minimal',             -- シンプルな通知スタイル
+			-- stages = 'slide', -- Notification animation style
+			stages = 'fade_in_slide_out', -- Notification animation style
+			timeout = 4000,  -- Notification display time (ms)
+			background_colour = '#1e222a',  -- Set background color
+			render = 'minimal',             -- Simple style
 			-- task_list = {
-			-- 	direction = 'right', -- タスク一覧の方向
+			-- 	direction = 'right', -- Task List Direction
 			-- },
 		})
 		vim.notify = require('notify')
