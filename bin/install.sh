@@ -115,6 +115,7 @@ echo "Linking common configs..."
 # Git
 mkdir -p "$HOME/.config"
 link_file "$CONFIG_DIR/common/gitconfig" "$HOME/.gitconfig"
+git config --global core.autocrlf input
 
 # --- Neovim ---
 echo "Linking Neovim configs..."

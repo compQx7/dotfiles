@@ -1,9 +1,18 @@
 # TODO
 
+- main repository
+  - 改行コードの統一
+    - Windows, Linux でクローンしても問題ないようにする
+  - squash merge
+    - merge to main brach without TODO.md
+
 ## dotfiles 運用
 
 - 初期化スクリプト作成
-  - 実行しなくとも手順書になる(README.md 削減)
+  - 必要な要素
+    - .config/, git, nvim
+    - mac, windows対応を考慮したファイル配置にする
+  - README.md 削減
 
 - WSL2設定ファイルの管理
   - wsl の ~/.config で他に管理するものある？
@@ -11,11 +20,6 @@
     - GUIDはdotfiles管理に入れてよい？
   - /etc/wsl.conf
 - .Brewfile
-
-## Task for main branching
-
-- keymap description
-- Japanese -> English
 
 ## nvim
 

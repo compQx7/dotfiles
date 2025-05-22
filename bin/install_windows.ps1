@@ -69,6 +69,7 @@ New-Symlink -Source $pwshSrc -Target $pwshDest
 $gitSrc = Join-Path $DOTFILES_DIR "git\.gitconfig"
 $gitDest = "$HOME\.gitconfig"
 New-Symlink -Source $nvimSrc -Target $nvimDest
+# git config --global core.autocrlf true
 
 # NeoVim
 $nvimSrc = Join-Path $DOTFILES_DIR "config\common\vim\nvim"
