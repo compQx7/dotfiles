@@ -1,5 +1,4 @@
 -- local is_windows = vim.loop.os_uname().sysname == 'Windows'
--- local is_vscode = vim.fn.exists('g:vscode') == 1
 local is_vscode = require('utils').is_vscode
 
 require('core.options')
@@ -21,7 +20,7 @@ if vim.loop.os_uname().sysname == 'Windows_NT' then
 	end
 end
 
-if not is_vscode then
+if not is_vscode() then
 	require('plugins/lazy')
 	require('plugins/keymaps')
 end
