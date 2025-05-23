@@ -1,3 +1,5 @@
+local keymap = require('utils').keymap
+
 local aerial = {
 	'stevearc/aerial.nvim',
 	dependencies = {
@@ -14,6 +16,9 @@ local aerial = {
         ['l'] = 'actions.jump',
 			},
 		})
+		keymap('n', 'gO', '<cmd>AerialToggle!<CR>', { desc = 'Aerial toggle' })
+		keymap('n', ']o', '<cmd>AerialNext<CR>', { desc = '' })
+		keymap('n', '[o', '<cmd>AerialPrev<CR>', { desc = '' })
 	end,
 }
 

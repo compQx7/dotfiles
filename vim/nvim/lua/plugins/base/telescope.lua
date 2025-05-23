@@ -1,3 +1,5 @@
+local keymap = require('utils').keymap
+
 VerticalLayout1 = {
 	layout_strategy = 'vertical',
 	layout_config = {
@@ -147,6 +149,20 @@ local telescope = {
 		-- 		end,
 		-- 	}
 		-- end, { desc = 'Manage buffers' })
+		local builtin = require('telescope.builtin')
+		keymap('n', '<Leader>fn', builtin.find_files, { desc = 'Telescope find files' })
+		keymap('n', '<Leader>fa', builtin.live_grep, { desc = 'Telescope live grep' })
+		keymap('n', '<Leader>fh', builtin.help_tags, { desc = 'Telescope help tags' })
+		keymap('n', '<Leader>fb', builtin.buffers, { desc = 'Telescope buffers' })
+		keymap('n', '<Leader>fm', builtin.marks, { desc = 'Telescope marks' })
+		keymap('n', '<Leader>f:', builtin.command_history, { desc = '' })
+		keymap('n', '<Leader>fs', builtin.symbols, { desc = '' })
+		keymap('n', '<Leader>fq', builtin.quickfixhistory, { desc = '' })
+		keymap('n', '<Leader>fd', builtin.diagnostics, { desc = '' })
+		keymap('n', '<Leader>ff', '<cmd>Telescope current_buffer_fuzzy_find<CR>', { desc = '' })
+		keymap('n', '<Leader>fgc', '<cmd>Telescope git_commits<CR>', { desc = '' })
+		keymap('n', '<Leader>fgs', '<cmd>Telescope git_status<CR>', { desc = '' })
+		keymap('n', '<Leader>fr', '<cmd>Telescope resume<CR>', { desc = '' })
 	end,
 }
 

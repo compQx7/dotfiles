@@ -1,3 +1,5 @@
+local keymap = require('utils').keymap
+
 local diffview = {
 	'sindrets/diffview.nvim',
 	lazy = false,
@@ -24,6 +26,10 @@ local diffview = {
 				},
 			},
 		})
+		keymap('n', '<Leader>hh', '<cmd>DiffviewOpen HEAD<CR>', { desc = '' })
+		keymap('n', '<Leader>hf', '<cmd>DiffviewFileHistory %<CR>', { desc = '' })
+		keymap('n', '<Leader>hc', '<cmd>DiffviewClose<CR>', { desc = '' })
+		keymap('n', '<Leader>hd', '<cmd>Diffview<CR>', { desc = '' })
 	end,
 }
 

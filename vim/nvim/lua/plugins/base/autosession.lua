@@ -1,3 +1,5 @@
+local keymap = require('utils').keymap
+
 local autosession = {
 	'rmagatti/auto-session',
 	dependencies = {
@@ -28,6 +30,8 @@ local autosession = {
 				},
 			},
 		})
+		keymap('n', '<leader>fw', '<cmd>SessionSearch<CR>', { desc = 'Session search' } )
+		keymap('n', '<leader>ws', '<cmd>SessionSave<CR>', { desc = 'Save session' } )
 	end,
 }
 

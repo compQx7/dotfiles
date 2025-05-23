@@ -1,3 +1,5 @@
+local keymap = require('utils').keymap
+
 local flash = {
 	'folke/flash.nvim',
 	event = 'VeryLazy',
@@ -24,6 +26,8 @@ local flash = {
 			},
 			highlight = { backdrop = false },
 		})
+		keymap({ 'n', 'x' }, 's', function() require('flash').jump() end, { desc = '' } )
+		keymap({ 'n', 'x' }, 'S', function() require('flash').jump({ continue = true }) end, { desc = '' } )
 	end,
 }
 

@@ -1,3 +1,5 @@
+local keymap = require('utils').keymap
+
 local cmp = {
 	'hrsh7th/nvim-cmp',
 	dependencies = {
@@ -8,6 +10,7 @@ local cmp = {
 		'L3MON4D3/LuaSnip', -- Snipet engine
 		'saadparwaiz1/cmp_luasnip', -- Completion for LuaSnip
 		'onsails/lspkind.nvim',
+		"zbirenbaum/copilot.lua",
 	},
 	event = {'InsertEnter'},
 	config = function()
@@ -84,6 +87,11 @@ local cmp = {
 				{ name = 'cmdline' },
 			},
 		})
+		keymap('i', '<C-y>', '<Plug>(copilot-accept-line)', { desc = '' })
+		keymap('i', '<C-l>', '<Plug>(copilot-accept-word)', { desc = '' })
+		keymap('i', '<M-]>', '<Plug>(copilot-next)', { desc = '' })
+		keymap('i', '<M-[>', '<Plug>(copilot-previous)', { desc = '' })
+		keymap('i', '<M-i>', '<Plug>(copilot-suggest)', { desc = '' })
 	end,
 }
 

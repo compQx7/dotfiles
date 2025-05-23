@@ -28,5 +28,37 @@ function M.find_file_path(file_name, include_file_name)
 	return nil
 end
 
+-- Return mode list as array
+local function normalize_modes(mode)
+  if type(mode) == "string" then
+    return { mode }
+  elseif type(mode) == "table" then
+    return mode
+  else
+    error("Invalid mode type: " .. vim.inspect(mode))
+  end
+end
+
+local keys = {}
+M.keymap = function(mode, lhs, rhs, opts)
+  opts = opts or {}
+  local modes = normalize_modes(mode)
+
+  -- Common default options
+  local defaults = { noremap = true, silent = true }
+  opts = vim.tbl_deep_extend("force", defaults, opts)
+
+  -- Check duplicate
+  for _, m in ipairs(modes) do
+    local key = m .. ":" .. lhs
+    if keys[key] then
+      vim.notify("Duplicate keymap: " .. key, vim.log.levels.WARN)
+    end
+    keys[key] = true
+  end
+
+  vim.keymap.set(mode, lhs, rhs, opts)
+end
+
 return M
 

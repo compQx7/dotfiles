@@ -1,3 +1,5 @@
+local keymap = require('utils').keymap
+
 local plug = {
   'stevearc/overseer.nvim',
 	-- dependencies = {
@@ -58,6 +60,10 @@ local plug = {
 				overseer.run_action(tasks[1], 'restart')
 			end
 		end, {})
+
+		keymap('n', '<Leader>to', '<cmd>OverseerToggle<CR>', { desc = '' })
+		keymap('n', '<Leader>tr', '<cmd>OverseerRun<CR>', { desc = '' })
+		keymap('n', '<Leader>tl', '<cmd>OverseerRestartLast<CR>', { desc = '' })
 	end,
 }
 

@@ -1,3 +1,5 @@
+local keymap = require('utils').keymap
+
 local oil = {
 	'stevearc/oil.nvim',
 	config = function()
@@ -59,6 +61,15 @@ local oil = {
 				},
 			},
 		})
+
+		local oil = require('oil')
+		keymap('n', '<Space>fe', function()
+			-- require('oil').toggle_float()
+			oil.open()
+		end, { desc = 'Oil current buffer\'s directory' })
+		keymap('n', '<Space>fE', function()
+			oil.open('.')
+		end, { desc = 'Oil .' })
 	end,
 }
 

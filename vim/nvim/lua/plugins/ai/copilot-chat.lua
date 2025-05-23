@@ -1,3 +1,5 @@
+local keymap = require('utils').keymap
+
 local copilotchat = {
 	'CopilotC-Nvim/CopilotChat.nvim',
 	dependencies = {
@@ -90,6 +92,10 @@ local copilotchat = {
 			local actions = require('CopilotChat.actions')
 			require('CopilotChat.integrations.telescope').pick(actions.prompt_actions())
 		end, {})
+
+		keymap({ 'n', 'x' }, '<leader>ip', '<cmd>ShowCopilotChatActionPrompt<cr>', { desc = '' })
+		keymap({ 'n', 'x' }, '<leader>io', '<cmd>CopilotChatToggle<CR>', { desc = '' })
+		keymap('n', '<leader>ib', '<cmd>lua CopilotChatBuffer()<cr>', { desc = '' })
 	end,
 }
 

@@ -22,6 +22,5 @@ end
 
 if not is_vscode() then
 	require('plugins/lazy')
-	require('plugins/keymaps')
 end
 
