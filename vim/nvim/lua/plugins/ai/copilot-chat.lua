@@ -7,7 +7,6 @@ local copilotchat = {
 		{ 'nvim-lua/plenary.nvim', branch = 'master' }, -- for curl, log and async functions
 	},
 	config = function()
-		local select = require('CopilotChat.select')
 		require('CopilotChat').setup({
 			debug = false,
 
@@ -37,19 +36,20 @@ local copilotchat = {
 			prompts = {
 				Explain = {
 					prompt = '/COPILOT_EXPLAIN Please write a paragraph explaining the code I have selected. Please reply in Japanese.',
+          context = 'buffer:current',
 				},
 				Review = {
-					prompt = '/COPILOT_REVIEW Review the selected code. Please reply in Japanese.',
+					prompt = '/COPILOT_REVIEW Review the selected code.',
 					callback = function(response, source) end,
 				},
 				Fix = {
 					prompt = '/COPILOT_FIX This code has a problem. Please rewrite it to fix the bug.',
 				},
 				Refactor = {
-					prompt = '/COPILOT_GENERATE Please refactor the following code to improve its scalability and readability.',
+					prompt = 'Please refactor the following code to improve its scalability and readability.',
 				},
-				BetterNamings = {
-					prompt = '/COPILOT_GENERATE Please improve the variable and function names in the selected code.',
+				Name = {
+					prompt = 'Please improve the variable and function names in the selected code.',
 				},
 				Optimize = {
 					prompt = '/COPILOT_REFACTOR Optimize selected code to improve performance and readability.',
@@ -60,42 +60,23 @@ local copilotchat = {
 				Tests = {
 					prompt = '/COPILOT_TESTS Write detailed unit test functions for selected code.',
 				},
-				Summarize = {
-					prompt = '/COPILOT_GENERATE Please write a summary of your selection. Please reply in Japanese.',
-				},
-				FixDiagnostic = {
-					prompt = 'Please diagnose problems like the following in the file:',
-					selection = select.diagnostics,
+				Translate = {
+					prompt = 'Please translate the selected text into Japanese.',
 				},
 				Commit = {
 					prompt = 'Please write the commit message of the change in Japanese according to the commitizen rules. The title should be a maximum of 50 characters, and the message should be wrapped at 72 characters. Enclose the entire message in a code block in the gitcommit language.',
-					selection = select.gitdiff,
-				},
-				CommitStaged = {
-					prompt = 'Please write the commit message of the change in Japanese according to the commitizen rules. The title should be a maximum of 50 characters, and the message should be wrapped at 72 characters. Enclose the entire message in a code block in the gitcommit language.',
-					selection = function(source)
-						local select = require('CopilotChat.select')
-						return select.gitdiff(source, true)
-					end,
+          context = 'git:staged',
 				},
 			},
 		})
-
-		vim.api.nvim_create_user_command('CopilotChatBuffer', function()
-			local input = vim.fn.input('Quick Chat: ')
-			if input ~= '' then
-				require('CopilotChat').ask(input, { selection = require('CopilotChat.select').buffer })
-			end
-		end, {})
 
 		vim.api.nvim_create_user_command('ShowCopilotChatActionPrompt', function()
 			local actions = require('CopilotChat.actions')
 			require('CopilotChat.integrations.telescope').pick(actions.prompt_actions())
 		end, {})
 
-		keymap({ 'n', 'x' }, '<leader>ip', '<cmd>ShowCopilotChatActionPrompt<cr>', { desc = '' })
-		keymap({ 'n', 'x' }, '<leader>io', '<cmd>CopilotChatToggle<CR>', { desc = '' })
-		keymap('n', '<leader>ib', '<cmd>lua CopilotChatBuffer()<cr>', { desc = '' })
+		keymap({ 'n', 'x' }, '<leader>io', '<cmd>ShowCopilotChatActionPrompt<CR>', { desc = '' })
+		keymap({ 'n', 'x' }, '<leader>ic', '<cmd>CopilotChatToggle<CR>', { desc = '' })
 	end,
 }
 
