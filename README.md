@@ -1,55 +1,47 @@
-# dotfiles-and-scripts
+# dotfiles
 
-## Windows
+## Prerequisites
 
-### Prerequisites
+Linux:
 
 - Git must be installed
-- PowerShell 7 or later
 
-[PowerShell 7](https://learn.microsoft.com/ja-jp/powershell/scripting/whats-new/migrating-from-windows-powershell-51-to-powershell-7?view=powershell-7.4)
+Windows:
+
+- [PowerShell 7](https://learn.microsoft.com/ja-jp/powershell/scripting/whats-new/migrating-from-windows-powershell-51-to-powershell-7?view=powershell-7.4) or later
 
 ```ps1
 winget install --id Microsoft.PowerShell --source winget
 ```
 
-1. Clone this repository.
-2. Run the install script.
+## How to use
 
-## Linux
+1. Clone this repository to the home directory.
 
-### NeoVim
+1. Check the packages to be installed and comment them out if necessary.
 
-Update & Install basics
+    - bin/Brewfile
+    - mise/config.toml
 
-```sh
-# e.g. ubuntu
-sudo apt update && sudo apt upgrade -y
-sudo apt install -y build-essential curl git
-```
+1. Run the install script.
 
-Clone dotfiles
+    Linux:
 
-```sh
-ghq get {compQx7/dotfiles}
-ln -s ~/dotfiles/linux/.bashrc ~
-ln -s ~/dotfiles/.tmux.conf ~
-ln -s ~/dotfiles/git/.gitconfig ~
-mkdir ~/.config
-ln -s ~/dotfiles/vim/nvim ~/.config
-ln -s ~/dotfiles/git/lazygit ~/.config
-ln -s ~/dotfiles/mise ~/.config
-```
+    ```sh
+    cd ~/dotfiles/bin
+    ./install.sh
+    ```
 
-```sh
-asdf list all golang
-asdf plugin add golang XXXXXX.git
-asdf install golang latest
-asdf global golang latest
-```
+    Windows:
+
+    ```ps1
+    ```
 
 ## Remind
 
-- Always be aware of tool dependency. Emphasize pure functionality.
-- Regularly refer to other dot files and incorporate them.
+- Be aware of extensibility and portability.
+  Always be aware of tool dependency. Emphasize pure functionality.
+
+- Don't forget to improve the environment.
+  Regularly refer to other dotfiles and incorporate them.
 

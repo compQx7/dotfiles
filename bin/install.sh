@@ -1,15 +1,38 @@
-#!/usr/bin bash
+#!/usr/bin/bash
 
 # Error when using undefined variables
 # Exit the script if an error occurs
 set -ue
 
+# The link_file function creates a symbolic link from the specified source (src)
+# to the destination (dest).
+# - If dest is already a symbolic link, it will be overwritten.
+# - If dest is a regular file or directory, it will be skipped.
+# - If dest does not exist, a new symbolic link will be created.
+link_file() {
+	src=$1
+	dest=$2
+
+	if [ -L "$dest" ]; then
+		if [ "$(readlink "$dest")" = "$src" ]; then
+			echo "  Symlink $dest already points to $src, skipping"
+		else
+			echo "  Overwriting symlink $dest"
+			rm "$dest"
+			ln -s "$src" "$dest"
+		fi
+	elif [ -e "$dest" ]; then
+		echo "  Skipping $dest (already exists and is not a symlink)"
+	else
+		echo "  Linking $dest → $src"
+		ln -s "$src" "$dest"
+	fi
+}
+
 # --- Initialize ---
 DOTFILES_DIR="$HOME/dotfiles"
-CONFIG_DIR="$DOTFILES_DIR/config"
-BACKUP_DIR="$HOME/dotfiles_backup"
 
-echo "Starting dotfiles install for Linux with Homebrew"
+echo "Starting dotfiles install."
 echo "Dotfiles directory: $DOTFILES_DIR"
 
 # --- Install Homebrew ---
@@ -22,105 +45,32 @@ else
 	echo "Homebrew already installed."
 fi
 
-# --- Install packages by Homebrew ---
+# --- Install tools by Homebrew ---
 echo "Installing packages with Homebrew..."
+brew bundle --no-upgrade --file="$DOTFILES_DIR/bin/Brewfile"
 
-brew_packages=(
-	git
-	zsh
-	curl
-	mise
-	neovim
-	fzf
-	ripgrep
-	fd
-	ghq
-	lazygit
-	git-delta
-	tmux
-	jq
-	yq
-	unzip
-	starship
-)
+# --- Making Symlink ---
 
-for pkg in "${brew_packages[@]}"; do
-	if ! brew list "$pkg" &>/dev/null; then
-		echo "  ➤ Installing $pkg"
-		brew install "$pkg"
-	else
-		echo "  ✓ $pkg already installed"
-	fi
-done
+mkdir -p "$HOME/.config"
 
-# # A list of configuration files to link to
-# FILES=(
-# 	"bashrc"
-# 	"vimrc"
-# 	"gitconfig"
-# )
-#
-# # Create the backup directory if it does not exist.
-# mkdir -p "$BACKUP_DIR"
-#
-# for file in "${FILES[@]}"; do
-# 	# The actual file I want to link (in the repository)
-# 	target="$DOTFILES_DIR/$file"
-# 	# Link name
-# 	link_name="$HOME/.$file"
-#
-# 	# Does the symbolic link already exist?
-# 	if [ -L "$link_name" ]; then
-# 		# Check if the link is correct
-# 		actual_target="$(readlink "$link_name")"
-# 		if [ "$actual_target" = "$target" ]; then
-# 			echo "[INFO] .$file: Correct symlink already exists. Skip."
-# 		else
-# 			echo "[WARN] .$file: There is a different symbolic link, so delete it."
-# 			rm "$link_name"
-# 			ln -s "$target" "$link_name"
-# 			echo "[INFO] .$file: Created a new symbolic link."
-# 		fi
-#
-# 	# If a physical file/directory exists, not a symbolic link
-# 	elif [ -e "$link_name" ]; then
-# 		echo "[WARN] .$file: Move to the backup directory since it has existing files/directories."
-# 		mv "$link_name" "$BACKUP_DIR"
-# 		ln -s "$target" "$link_name"
-# 		echo "[INFO] .$file: Created a symbolic link."
-#
-# 	else
-# 		echo "[INFO] .$file: Create a symbolic link."
-# 		ln -s "$target" "$link_name"
-# 		echo "[INFO] .$file: Created a symbolic link."
-# 	fi
-# done
+# Bash
+link_file "$DOTFILES_DIR/linux/.bashrc" "$HOME/.bashrc"
 
-link_file() {
-	src=$1
-	dest=$2
-
-	if [ -e "$dest" ] || [ -L "$dest" ]; then
-		echo "  Skipping $dest (already exists)"
-	else
-		echo "  Linking $dest → $src"
-		ln -s "$src" "$dest"
-	fi
-}
-
-# --- Common Settings ---
-echo "Linking common configs..."
+# mise
+link_file "$DOTFILES_DIR/mise" "$HOME/.config/mise"
 
 # Git
-mkdir -p "$HOME/.config"
-link_file "$CONFIG_DIR/common/gitconfig" "$HOME/.gitconfig"
-git config --global core.autocrlf input
+link_file "$DOTFILES_DIR/git/.gitconfig" "$HOME/.gitconfig"
+link_file "$DOTFILES_DIR/git/.gitignore" "$HOME/.gitignore"
+link_file "$DOTFILES_DIR/git/lazygit" "$HOME/.config/lazygit"
+# git config --global core.autocrlf input
 
-# --- Neovim ---
-echo "Linking Neovim configs..."
-mkdir -p "$HOME/.config"
-link_file "$CONFIG_DIR/linux/nvim" "$HOME/.config/nvim"
+# Tmux
+link_file "$DOTFILES_DIR/.tmux.conf" "$HOME/.tmux.conf"
+
+# Neovim
+link_file "$DOTFILES_DIR/vim/nvim" "$HOME/.config/nvim"
 
 # --- Complete ---
-echo "Linux (Homebrew) dotfiles installation complete!"
+echo "dotfiles installation complete!"
 
