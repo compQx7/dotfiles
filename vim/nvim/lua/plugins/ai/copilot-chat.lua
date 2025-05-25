@@ -64,7 +64,7 @@ local copilotchat = {
           prompt = 'Please translate the selected text into Japanese.',
         },
         Commit = {
-          prompt = 'Please write the commit message of the change in Japanese according to the commitizen rules. The title should be a maximum of 50 characters, and the message should be wrapped at 72 characters. Enclose the entire message in a code block in the gitcommit language.',
+          prompt = 'Please write the commit message of the change according to the commitizen rules. The title should be a maximum of 50 characters, and the message should be wrapped at 72 characters. Enclose the entire message in a code block in the gitcommit language.',
           context = 'git:staged',
         },
       },

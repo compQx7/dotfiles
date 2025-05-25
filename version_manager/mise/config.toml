@@ -1,7 +1,9 @@
 [tools]
 node = "20.12.2"
 rust = "1.86.0"
+python = "3.13.3"
 stylua = "latest"
+rust-analyzer = "latest"
 lua-language-server = "latest"
 
 [settings]

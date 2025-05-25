@@ -44,7 +44,7 @@ fi
 
 # --- Install tools by Homebrew ---
 echo "Installing packages with Homebrew..."
-brew bundle --no-upgrade --file="$DOTFILES_DIR/bin/Brewfile"
+brew bundle --no-upgrade --file="$DOTFILES_DIR/version_manager/Brewfile"
 
 # --- Making Symlink ---
 
@@ -54,7 +54,7 @@ mkdir -p "$HOME/.config"
 link_file "$DOTFILES_DIR/linux/.bashrc" "$HOME/.bashrc"
 
 # mise
-link_file "$DOTFILES_DIR/mise" "$HOME/.config/mise"
+link_file "$DOTFILES_DIR/version_manager/mise" "$HOME/.config/mise"
 
 # Git
 link_file "$DOTFILES_DIR/git/.gitconfig" "$HOME/.gitconfig"
@@ -67,6 +67,11 @@ link_file "$DOTFILES_DIR/.tmux.conf" "$HOME/.tmux.conf"
 
 # Neovim
 link_file "$DOTFILES_DIR/vim/nvim" "$HOME/.config/nvim"
+
+# --- Install tools ---
+mise install
+npm install -g typescript typescript-language-server eslint
+pip install python-lsp-server
 
 # --- Complete ---
 echo "dotfiles installation complete!"
