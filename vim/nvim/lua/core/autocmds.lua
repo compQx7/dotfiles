@@ -1,38 +1,26 @@
+local function set_filetype_autocmds(pattern, tabstop, expandtab)
+	vim.api.nvim_create_autocmd('FileType', {
+		group = 'FileTypeSpecificSettings',
+		pattern = pattern,
+		callback = function()
+			vim.opt_local.tabstop = tabstop
+			vim.opt_local.softtabstop = tabstop
+			vim.opt_local.shiftwidth = tabstop
+			vim.opt_local.expandtab = expandtab
+		end,
+	})
+end
+
 vim.api.nvim_create_augroup('FileTypeSpecificSettings', { clear = true })
-vim.api.nvim_create_autocmd('FileType', {
-	group = 'FileTypeSpecificSettings',
-	pattern = 'markdown',
-	callback = function()
-		vim.opt_local.shiftwidth = 2
-		vim.opt_local.tabstop = 2
-		vim.opt_local.softtabstop = 2
-	end,
-})
-vim.api.nvim_create_autocmd('FileType', {
-	group = 'FileTypeSpecificSettings',
-	pattern = 'rust',
-	callback = function()
-		vim.opt_local.shiftwidth = 4
-		vim.opt_local.tabstop = 4
-		vim.opt_local.softtabstop = 4
-	end,
-})
-vim.api.nvim_create_autocmd('FileType', {
-	group = 'FileTypeSpecificSettings',
-	pattern = 'lua',
-	callback = function()
-		vim.opt_local.shiftwidth = 2
-		vim.opt_local.tabstop = 2
-		vim.opt_local.softtabstop = 2
-	end,
-})
-vim.api.nvim_create_autocmd('FileType', {
-	group = 'FileTypeSpecificSettings',
-	pattern = { 'css', 'scss' },
-	callback = function()
-		vim.opt_local.shiftwidth = 4
-		vim.opt_local.tabstop = 4
-		vim.opt_local.softtabstop = 4
-	end,
-})
+
+-- Define filetype-specific settings
+set_filetype_autocmds('cs', 4, false)
+set_filetype_autocmds({ 'css', 'scss' }, 4, false)
+set_filetype_autocmds('html', 2, true)
+set_filetype_autocmds({ 'javascript', 'javascriptreact' }, 4, false)
+set_filetype_autocmds('json', 2, true)
+set_filetype_autocmds('lua', 2, false)
+set_filetype_autocmds('markdown', 2, false)
+set_filetype_autocmds('rust', 4, false)
+set_filetype_autocmds({ 'typescript', 'typescriptreact' }, 2, false)
 
