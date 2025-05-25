@@ -275,6 +275,8 @@ __tree_with_lines() {
 	fi
 }
 
+# The operating system type for dotfiles configuration scripts
+export DOTFILES_OS_TYPE=linux
 # default less options
 export LESS='-i -M -R'
 
