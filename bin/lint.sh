@@ -11,7 +11,7 @@ echo "==> Changing to $NVIM_DIR"
 cd "$NVIM_DIR"
 
 echo "==> Running stylua..."
-stylua -c ./lua/core
+stylua -c ./lua
 
 echo "==> Running luacheck..."
 luacheck .

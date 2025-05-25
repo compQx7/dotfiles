@@ -13,7 +13,7 @@ local ale = {
       -- ['html'] = ['htmlhint'],
       -- ['json'] = ['jsonlint'],
       -- ['markdown'] = ['markdownlint'],
-      -- ['lua'] = ['luacheck'],
+      lua = { 'luacheck' },
       -- ['yaml'] = ['yamllint'],
       -- ['rust'] = ['cargo'],
     }
