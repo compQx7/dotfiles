@@ -1,3 +1,3 @@
 return {
-	'sample.test',
+  'sample.test',
 }

@@ -1,3 +1,3 @@
 return {
-	'rust.test',
+  'rust.test',
 }

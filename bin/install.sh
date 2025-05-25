@@ -1,8 +1,5 @@
-#!/usr/bin/bash
-
-# Error when using undefined variables
-# Exit the script if an error occurs
-set -ue
+#!/usr/bin/env bash
+set -euo pipefail
 
 # The link_file function creates a symbolic link from the specified source (src)
 # to the destination (dest).

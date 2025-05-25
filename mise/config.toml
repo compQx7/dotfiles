@@ -1,6 +1,7 @@
 [tools]
 node = "20.12.2"
 rust = "1.86.0"
+stylua = "latest"
 
 [settings]
 idiomatic_version_file_enable_tools = []
