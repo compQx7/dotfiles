@@ -2,11 +2,15 @@
 
 ## Prerequisites
 
-Linux:
-
 - Git must be installed
 
-Windows:
+```sh
+# e.g. ubuntu
+sudo apt update && sudo apt upgrade -y
+sudo apt install -y build-essential curl git
+```
+
+Windows only:
 
 - [PowerShell 7](https://learn.microsoft.com/ja-jp/powershell/scripting/whats-new/migrating-from-windows-powershell-51-to-powershell-7?view=powershell-7.4) or later
 
@@ -20,8 +24,8 @@ winget install --id Microsoft.PowerShell --source winget
 
 1. Check the packages to be installed and comment them out if necessary.
 
-    - bin/Brewfile
-    - mise/config.toml
+    - dotfiles/version_manager/Brewfile
+    - dotfiles/version_manager/mise/config.toml
 
 1. Run the install script.
 
@@ -39,9 +43,9 @@ winget install --id Microsoft.PowerShell --source winget
 
 ## Remind
 
-- Be aware of extensibility and portability.
+- Be aware of extensibility and portability.  
   Always be aware of tool dependency. Emphasize pure functionality.
 
-- Don't forget to improve the environment.
+- Don't forget to improve the environment.  
   Regularly refer to other dotfiles and incorporate them.
 
