@@ -88,7 +88,7 @@ mise install
 
 # --- Making Symlink ---
 
-mkdir -p "$HOME/.config"
+mkdir -p "$HOME/.config/git"
 
 # Bash
 link_file "$DOTFILES_DIR/linux/.bashrc" "$HOME/.bashrc"
@@ -98,7 +98,7 @@ link_file "$DOTFILES_DIR/version_manager/mise" "$HOME/.config/mise"
 
 # Git
 generate_gitconfig
-link_file "$DOTFILES_DIR/git/.gitignore" "$HOME/.gitignore"
+link_file "$DOTFILES_DIR/git/ignore" "$HOME/.config/git/ignore"
 link_file "$DOTFILES_DIR/git/lazygit" "$HOME/.config/lazygit"
 
 # Tmux
