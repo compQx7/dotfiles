@@ -1,3 +1,4 @@
 .env
 mise.local.toml
+*.local.md
 
