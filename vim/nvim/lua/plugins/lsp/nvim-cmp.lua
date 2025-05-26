@@ -1,4 +1,5 @@
 local keymap = require('utils').keymap
+local is_vscode = require('utils').is_vscode
 
 local cmp = {
   'hrsh7th/nvim-cmp',
@@ -13,6 +14,7 @@ local cmp = {
     'zbirenbaum/copilot.lua',
   },
   event = { 'InsertEnter' },
+  enabled = not is_vscode(),
   config = function()
     local cmp = require('cmp')
     local types = require('cmp.types')

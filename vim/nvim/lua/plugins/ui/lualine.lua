@@ -1,6 +1,9 @@
+local is_vscode = require('utils').is_vscode
+
 local lualine = {
   'nvim-lualine/lualine.nvim',
   dependencies = { 'nvim-tree/nvim-web-devicons' },
+  enabled = not is_vscode(),
   config = function()
     require('lualine').setup({
       options = {

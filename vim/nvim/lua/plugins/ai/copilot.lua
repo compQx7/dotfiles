@@ -1,3 +1,4 @@
+local is_vscode = require('utils').is_vscode
 -- local copilot = {
 -- 	'github/copilot.vim',
 -- 	lazy = false,
@@ -6,6 +7,7 @@ local copilot = {
   'zbirenbaum/copilot.lua',
   cmd = 'Copilot',
   event = 'InsertEnter',
+  enabled = not is_vscode(),
   config = function()
     require('copilot').setup({
       copilot_node_command = (function()

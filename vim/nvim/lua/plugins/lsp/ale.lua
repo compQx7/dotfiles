@@ -1,6 +1,9 @@
+local is_vscode = require('utils').is_vscode
+
 local ale = {
   'dense-analysis/ale',
   event = { 'BufRead', 'BufNewFile' },
+  enabled = not is_vscode(),
   config = function()
     vim.g.ale_linters = {
       javascript = { 'eslint' },

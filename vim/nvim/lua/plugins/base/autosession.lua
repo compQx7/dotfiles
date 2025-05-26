@@ -1,4 +1,5 @@
 local keymap = require('utils').keymap
+local is_vscode = require('utils').is_vscode
 
 local autosession = {
   'rmagatti/auto-session',
@@ -6,6 +7,7 @@ local autosession = {
     'nvim-telescope/telescope.nvim',
   },
   lazy = false,
+  enabled = not is_vscode(),
   config = function()
     require('auto-session').setup({
       auto_create = false,

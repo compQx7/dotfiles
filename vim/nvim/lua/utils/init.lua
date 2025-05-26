@@ -4,8 +4,7 @@ local M = {}
 
 -- local is_vscode = vim.g.vscode
 function M.is_vscode()
-  return vim.fn.exists('g:vscode') == 1
-  -- return vim.g.vscode
+  return vim.g.vscode
 end
 
 -- Searches for a specified file by traversing up the directory tree from the current buffer's directory.

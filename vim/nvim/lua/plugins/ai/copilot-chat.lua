@@ -1,4 +1,5 @@
 local keymap = require('utils').keymap
+local is_vscode = require('utils').is_vscode
 
 local copilotchat = {
   'CopilotC-Nvim/CopilotChat.nvim',
@@ -6,6 +7,7 @@ local copilotchat = {
     { 'github/copilot.vim' }, -- or zbirenbaum/copilot.lua
     { 'nvim-lua/plenary.nvim', branch = 'master' }, -- for curl, log and async functions
   },
+  enabled = not is_vscode(),
   config = function()
     require('CopilotChat').setup({
       debug = false,

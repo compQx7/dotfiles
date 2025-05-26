@@ -1,4 +1,5 @@
 local keymap = require('utils').keymap
+local is_vscode = require('utils').is_vscode
 
 local aerial = {
   'stevearc/aerial.nvim',
@@ -6,6 +7,7 @@ local aerial = {
     'nvim-treesitter/nvim-treesitter',
     'nvim-tree/nvim-web-devicons',
   },
+  enabled = not is_vscode(),
   config = function()
     require('aerial').setup({
       layout = {

@@ -1,7 +1,9 @@
 local keymap = require('utils').keymap
+local is_vscode = require('utils').is_vscode
 
 local oil = {
   'stevearc/oil.nvim',
+  enabled = not is_vscode(),
   config = function()
     require('oil').setup({
       -- float = {

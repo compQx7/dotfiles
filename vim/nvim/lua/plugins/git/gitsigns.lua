@@ -1,9 +1,11 @@
 local keymap = require('utils').keymap
+local is_vscode = require('utils').is_vscode
 
 local gitsigns = {
   'lewis6991/gitsigns.nvim',
   -- event = { 'BufRead', 'BufNewFile' },
   lazy = false,
+  enabled = not is_vscode(),
   config = function()
     require('gitsigns').setup({
       signs = {

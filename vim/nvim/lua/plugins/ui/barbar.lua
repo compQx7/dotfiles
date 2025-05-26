@@ -1,3 +1,5 @@
+local is_vscode = require('utils').is_vscode
+
 local barbar = {
   'romgrk/barbar.nvim',
   dependencies = {
@@ -7,6 +9,7 @@ local barbar = {
   init = function()
     vim.g.barbar_auto_setup = false
   end,
+  enabled = not is_vscode(),
   config = function()
     require('barbar').setup({})
   end,

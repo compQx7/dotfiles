@@ -1,8 +1,10 @@
 local keymap = require('utils').keymap
+local is_vscode = require('utils').is_vscode
 
 local bufferline = {
   'akinsho/bufferline.nvim',
   dependencies = 'nvim-tree/nvim-web-devicons',
+  enabled = not is_vscode(),
   config = function()
     require('bufferline').setup({})
     keymap('n', '<C-n>', '<cmd>BufferLineCycleNext<CR>', { desc = '' })

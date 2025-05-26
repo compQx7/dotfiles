@@ -1,5 +1,8 @@
+local is_vscode = require('utils').is_vscode
+
 local plug = {
   'rcarriga/nvim-notify',
+  enabled = not is_vscode(),
   config = function()
     require('notify').setup({
       -- stages = 'slide', -- Notification animation style

@@ -1,5 +1,8 @@
+local is_vscode = require('utils').is_vscode
+
 local nightfox = {
   'EdenEast/nightfox.nvim',
+  enabled = not is_vscode(),
   config = function()
     require('nightfox').setup({
       vim.cmd([[colorscheme nightfox]]),

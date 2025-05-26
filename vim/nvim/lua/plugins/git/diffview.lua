@@ -1,8 +1,10 @@
 local keymap = require('utils').keymap
+local is_vscode = require('utils').is_vscode
 
 local diffview = {
   'sindrets/diffview.nvim',
   lazy = false,
+  enabled = not is_vscode(),
   config = function()
     local actions = require('diffview.actions')
     require('diffview').setup({

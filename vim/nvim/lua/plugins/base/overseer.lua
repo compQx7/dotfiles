@@ -1,4 +1,5 @@
 local keymap = require('utils').keymap
+local is_vscode = require('utils').is_vscode
 
 local plug = {
   'stevearc/overseer.nvim',
@@ -6,6 +7,7 @@ local plug = {
   -- 	'nvim-lua/plenary.nvim',
   -- 	'nvim-telescope/telescope.nvim',
   -- },
+  enabled = not is_vscode(),
   config = function()
     local overseer = require('overseer')
 

@@ -1,3 +1,5 @@
+local is_vscode = require('utils').is_vscode
+
 local lspconfig = {
   'neovim/nvim-lspconfig',
   dependencies = {
@@ -8,6 +10,7 @@ local lspconfig = {
   -- lazy = false,
   -- priority = 1000
   event = { 'BufReadPre', 'BufNewFile' },
+  enabled = not is_vscode(),
   config = function()
     local lspconfig = require('lspconfig')
 

@@ -1,5 +1,4 @@
 -- local is_windows = vim.loop.os_uname().sysname == 'Windows'
-local is_vscode = require('utils').is_vscode
 
 require('core.options')
 require('core.autocmds')
@@ -20,6 +19,5 @@ if vim.loop.os_uname().sysname == 'Windows_NT' then
   end
 end
 
-if not is_vscode() then
-  require('plugins/lazy')
-end
+require('plugins/lazy')
+

@@ -1,4 +1,5 @@
 local keymap = require('utils').keymap
+local is_vscode = require('utils').is_vscode
 
 VerticalLayout1 = {
   layout_strategy = 'vertical',
@@ -61,6 +62,7 @@ local telescope = {
   },
   cmd = 'Telescope',
   -- lazy = false,
+  enabled = not is_vscode(),
   config = function()
     require('telescope').setup({
       defaults = {

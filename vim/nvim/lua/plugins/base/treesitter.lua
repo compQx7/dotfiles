@@ -1,10 +1,11 @@
+local is_vscode = require('utils').is_vscode
+
 local treesitter = {
   'nvim-treesitter/nvim-treesitter',
   dependencies = {
     'nvim-treesitter/nvim-treesitter-textobjects',
   },
   build = ':TSUpdate',
-  event = 'BufRead',
   install = function()
     require('nvim-treesitter.install').setup({
       prefer_git = false,
@@ -48,8 +49,11 @@ local treesitter = {
         'yaml',
       },
       highlight = {
-        enable = true,
+        enable = not is_vscode(),
         additional_vim_regex_highlighting = false,
+      },
+      indent = {
+        enable = not is_vscode(),
       },
       incremental_selection = {
         enable = true,

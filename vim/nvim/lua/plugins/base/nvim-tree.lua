@@ -1,3 +1,5 @@
+local is_vscode = require('utils').is_vscode
+
 local nvimtree = {
   'nvim-tree/nvim-tree.lua',
   version = '*',
@@ -5,6 +7,7 @@ local nvimtree = {
   dependencies = {
     'nvim-tree/nvim-web-devicons',
   },
+  enabled = not is_vscode(),
   config = function()
     require('nvim-tree').setup({
       update_focused_file = {
