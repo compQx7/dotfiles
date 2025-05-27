@@ -43,6 +43,8 @@ winget install --id Microsoft.PowerShell --source winget
 
 ## Remind
 
+- Build from scratch as much as possible.
+
 - Be aware of extensibility and portability.  
   Always be aware of tool dependency. Emphasize pure functionality.
 
