@@ -33,7 +33,8 @@ winget install --id Microsoft.PowerShell --source winget
 
     ```sh
     cd ~/dotfiles/bin
-    ./install.sh
+    # If you want to do a partial setup, run `./setup.sh` to see how to use it.
+    ./setup.sh all
     ```
 
     Windows:
