@@ -59,4 +59,21 @@ M.keymap = function(mode, lhs, rhs, opts)
   vim.keymap.set(mode, lhs, rhs, opts)
 end
 
+function M.get_latest_node_bin_path()
+  local node_version = tonumber(vim.fn.system('node --version'):match('v(%d+)'))
+  if node_version and node_version < 20 then
+    -- Find latest Node version ≥ 20 managed by mise
+    local latest_node_path = vim.fn.trim(
+      vim.fn.system(
+        'mise list node --json | jq -r \'[.[] | select(.version | test("^2[0-9]+"))] | max_by(.version) | .install_path\''
+      )
+    ) .. '/bin/'
+
+    if latest_node_path ~= '' then
+      return latest_node_path
+    end
+  end
+  return vim.fn.system('which node'):gsub('[\n\r]*$', ''):gsub('/[^/]+$', '/')
+end
+
 return M

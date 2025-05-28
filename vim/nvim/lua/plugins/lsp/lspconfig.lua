@@ -1,10 +1,9 @@
 local is_vscode = require('utils').is_vscode
+local get_latest_node_bin_path = require('utils').get_latest_node_bin_path
 
 local lspconfig = {
   'neovim/nvim-lspconfig',
   dependencies = {
-    { 'williamboman/mason.nvim' },
-    { 'williamboman/mason-lspconfig.nvim' },
     { 'hrsh7th/cmp-nvim-lsp' },
   },
   -- lazy = false,
@@ -13,17 +12,6 @@ local lspconfig = {
   enabled = not is_vscode(),
   config = function()
     local lspconfig = require('lspconfig')
-
-    require('mason').setup({})
-    require('mason-lspconfig').setup({
-      ensure_installed = {
-        -- 'rust_analyzer',
-        'ts_ls',
-        -- 'omnisharp',
-        'lua_ls',
-      },
-      automatic_installation = true,
-    })
 
     -- Settings for LSP Complement
     local capabilities = require('cmp_nvim_lsp').default_capabilities()
@@ -48,6 +36,7 @@ local lspconfig = {
     local servers = {
       rust_analyzer = {
         filetypes = { 'rust' },
+        cmd = { 'rust-analyzer' },
         capabilities = capabilities,
         on_attach = on_attach,
         -- cmd = { '/usr/local/bin/rust-analyzer' },
@@ -59,6 +48,11 @@ local lspconfig = {
       },
       ts_ls = {
         filetypes = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact' },
+        cmd = {
+          get_latest_node_bin_path() .. 'node',
+          get_latest_node_bin_path() .. 'typescript-language-server',
+          '--stdio',
+        },
         capabilities = capabilities,
         on_attach = on_attach,
         settings = {
@@ -72,8 +66,15 @@ local lspconfig = {
       -- 	cmd = { 'omnisharp' },
       -- 	root_dir = lspconfig.util.root_pattern('.sln', '.csproj', '.git'),
       -- },
+      pylsp = {
+        filetypes = { 'python' },
+        cmd = { 'pylsp' },
+        apabilities = capabilities,
+        on_attach = on_attach,
+      },
       lua_ls = {
         filetypes = { 'lua' },
+        cmd = { 'lua-language-server' },
         capabilities = capabilities,
         on_attach = on_attach,
         settings = {
@@ -81,6 +82,7 @@ local lspconfig = {
             diagnostics = {
               globals = { 'vim' },
             },
+            workspace = { library = vim.api.nvim_get_runtime_file('', true) },
           },
         },
       },
