@@ -16,6 +16,7 @@ local oil = {
         show_hidden = true,
       },
       keymaps = {
+        ["<C-r>"] = "actions.refresh",
         ['<Leader>fn'] = {
           function()
             require('telescope.builtin').find_files({
@@ -34,7 +35,7 @@ local oil = {
           end,
           mode = 'n',
           nowait = true,
-          desc = 'Find files in the current directory',
+          desc = 'Grep in the current directory',
         },
         ['<C-t>'] = {
           function()
@@ -47,19 +48,19 @@ local oil = {
           nowait = true,
           desc = 'Open terminal at the current directory',
         },
-        ['<Leader>l'] = {
+        ['<C-l>'] = {
           function()
             require('oil').select()
           end,
           mode = 'n',
           nowait = true,
-          desc = 'Open terminal at the current directory',
+          desc = 'Select file in oil',
         },
-        ['<Leader>h'] = {
+        ['<C-h>'] = {
           'actions.parent',
           mode = 'n',
           nowait = true,
-          desc = 'Open terminal at the current directory',
+          desc = 'Go to parent directory',
         },
       },
     })
