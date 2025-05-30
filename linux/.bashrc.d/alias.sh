@@ -167,17 +167,9 @@ __repo() {
   if [ -n "$selected" ]; then
     cd "$HOME/ghq/$selected"
   else
-    echo "No repository selected."
     return 1
   fi
 }
-
-# # The operating system type for dotfiles configuration scripts
-# export DOTFILES_OS_TYPE=linux
-# # Set the default editor to nvim
-# export EDITOR=nvim
-# # default less options
-# export LESS='-i -M -R'
 
 alias cdf="__cd_fzf"
 alias cdr="__cd_git_root"
@@ -197,7 +189,10 @@ alias dov="docker volume"
 alias g="git"
 alias gshow="__git_commit_browser"
 alias hist="history"
+alias l='ls -CF'
+alias la='ls -A'
 alias lg="lazygit"
+alias ll='ls -alF'
 alias gd="pushd"
 alias gdf="__git_diff_browser"
 alias ghs="gh search"
@@ -209,4 +204,16 @@ alias tree="__tree_with_lines"
 alias vi="nvim"
 alias vim="nvim"
 alias virepo="cd ~/ghq/\$(ghq list | fzf --reverse) && vi"
+
+# enable color support of ls and also add handy aliases
+if [ -x /usr/bin/dircolors ]; then
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    alias ls='ls --color=auto'
+    #alias dir='dir --color=auto'
+    #alias vdir='vdir --color=auto'
+
+    alias grep='grep --color=auto'
+    alias fgrep='fgrep --color=auto'
+    alias egrep='egrep --color=auto'
+fi
 

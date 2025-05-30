@@ -63,6 +63,7 @@ Windows:
 
     ```ps1
     cd ~/dotfiles/bin
+    Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
     # If you want to do a partial setup, run `./setup.ps1` to see how to use it.
     ./setup.ps1 all
     ```
