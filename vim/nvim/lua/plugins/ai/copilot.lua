@@ -12,11 +12,11 @@ local copilot = {
   event = 'InsertEnter',
   enabled = not is_vscode(),
   init = function()
-    vim.g.copilot_node_command = get_latest_node_bin_path() .. 'node'
+    vim.g.copilot_node_command = vim.fs.joinpath(get_latest_node_bin_path(), 'node')
   end,
   config = function()
     require('copilot').setup({
-      copilot_node_command = get_latest_node_bin_path() .. 'node',
+      copilot_node_command = vim.fs.joinpath(get_latest_node_bin_path(), 'node'),
     })
   end,
 }

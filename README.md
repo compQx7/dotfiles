@@ -2,21 +2,43 @@
 
 ## Prerequisites
 
+Linux:
+
 - Git must be installed
 
-```sh
-# e.g. ubuntu
-sudo apt update && sudo apt upgrade -y
-sudo apt install -y build-essential curl git
-```
+	```sh
+  # e.g. ubuntu
+	sudo apt update && sudo apt upgrade -y
+	sudo apt install -y build-essential curl git
+	```
 
-Windows only:
+Windows:
+
+- Git must be installed
+
+	```ps1
+	winget install Git.Git --source winget
+	```
+
+- VC++ Runtime
+
+	Check if already installed
+
+	```ps1
+	winget list --id Microsoft.VCRedist.2015+.x64
+	```
+
+	Install
+
+	```ps1
+	winget install Microsoft.VCRedist.2015+.x64 --source winget
+	```
 
 - [PowerShell 7](https://learn.microsoft.com/ja-jp/powershell/scripting/whats-new/migrating-from-windows-powershell-51-to-powershell-7?view=powershell-7.4) or later
 
-```ps1
-winget install --id Microsoft.PowerShell --source winget
-```
+	```ps1
+	winget install --id Microsoft.PowerShell --source winget
+	```
 
 ## How to use
 
@@ -40,6 +62,9 @@ winget install --id Microsoft.PowerShell --source winget
     Windows:
 
     ```ps1
+    cd ~/dotfiles/bin
+    # If you want to do a partial setup, run `./setup.ps1` to see how to use it.
+    ./setup.ps1 all
     ```
 
 ## Remind

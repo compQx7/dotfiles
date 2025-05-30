@@ -1,0 +1,109 @@
+{
+    "buckets": [
+        {
+            "Name": "main",
+            "Source": "https://github.com/ScoopInstaller/Main",
+            "Updated": "2025-04-08T21:31:26+09:00",
+            "Manifests": 1387
+        },
+        {
+            "Name": "extras",
+            "Source": "https://github.com/ScoopInstaller/Extras",
+            "Updated": "2025-04-08T21:31:03+09:00",
+            "Manifests": 2150
+        }
+    ],
+    "apps": [
+        {
+            "Name": "7zip",
+            "Source": "main",
+            "Info": "",
+            "Updated": "2025-03-30T13:32:49.8204265+09:00",
+            "Version": "24.09"
+        },
+        {
+            "Name": "delta",
+            "Source": "main",
+            "Info": "",
+            "Updated": "2025-04-08T22:40:16.3396229+09:00",
+            "Version": "0.18.2"
+        },
+        {
+            "Name": "fd",
+            "Source": "main",
+            "Info": "",
+            "Updated": "2025-04-08T22:33:28.836002+09:00",
+            "Version": "10.2.0"
+        },
+        {
+            "Name": "fzf",
+            "Source": "main",
+            "Info": "",
+            "Updated": "2025-03-30T17:52:19.6451561+09:00",
+            "Version": "0.60.3"
+        },
+        {
+            "Name": "gcc",
+            "Source": "main",
+            "Info": "",
+            "Updated": "2025-04-08T07:14:53.0569443+09:00",
+            "Version": "13.2.0"
+        },
+        {
+            "Name": "gh",
+            "Source": "main",
+            "Info": "",
+            "Updated": "2025-04-08T22:38:37.6290812+09:00",
+            "Version": "2.69.0"
+        },
+        {
+            "Name": "ghq",
+            "Source": "main",
+            "Info": "",
+            "Updated": "2025-03-30T17:52:14.298751+09:00",
+            "Version": "1.8.0"
+        },
+        {
+            "Name": "git",
+            "Source": "main",
+            "Info": "",
+            "Updated": "2025-03-30T13:33:28.3397223+09:00",
+            "Version": "2.49.0"
+        },
+        {
+            "Name": "googlechrome",
+            "Source": "extras",
+            "Info": "",
+            "Updated": "2025-03-30T13:37:53.9248644+09:00",
+            "Version": "134.0.6998.178"
+        },
+        {
+            "Name": "lazygit",
+            "Source": "extras",
+            "Info": "",
+            "Updated": "2025-04-06T17:40:03.5036639+09:00",
+            "Version": "0.48.0"
+        },
+        {
+            "Name": "mise",
+            "Source": "main",
+            "Info": "",
+            "Updated": "2025-05-16T00:31:29+09:00",
+            "Version": "2025.5.16"
+        },
+        {
+            "Name": "neovim",
+            "Source": "main",
+            "Info": "",
+            "Updated": "2025-04-08T07:19:47.5468669+09:00",
+            "Version": "0.11.0"
+        },
+        {
+            "Name": "ripgrep",
+            "Source": "main",
+            "Info": "",
+            "Updated": "2025-04-08T22:32:54.8710126+09:00",
+            "Version": "14.1.1"
+        }
+    ]
+}
