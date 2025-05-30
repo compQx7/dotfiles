@@ -16,7 +16,7 @@ local oil = {
         show_hidden = true,
       },
       keymaps = {
-        ["<C-r>"] = "actions.refresh",
+        ['<C-r>'] = 'actions.refresh',
         ['<Leader>fn'] = {
           function()
             require('telescope.builtin').find_files({

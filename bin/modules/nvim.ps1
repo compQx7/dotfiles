@@ -7,5 +7,5 @@ if (-not (Get-Command nvim -ErrorAction SilentlyContinue)) {
     exit 1
 }
 
-Link-File "$DOTFILES_DIR\vim\nvim" "$env:LOCALAPPDATA\nvim"
+Link-File "$DOTFILES_DIR\editor\nvim" "$env:LOCALAPPDATA\nvim"
 

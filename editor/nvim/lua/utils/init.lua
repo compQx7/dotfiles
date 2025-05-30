@@ -74,9 +74,9 @@ function M.get_latest_node_bin_path()
     end
   end
   local uname = vim.loop.os_uname().sysname
-  if uname == "Windows_NT" then
-    local node_path = vim.fn.system("(Get-Command node).Source"):gsub('[\n\r]*$', '')
-    return vim.fn.fnamemodify(node_path, ":h")
+  if uname == 'Windows_NT' then
+    local node_path = vim.fn.system('(Get-Command node).Source'):gsub('[\n\r]*$', '')
+    return vim.fn.fnamemodify(node_path, ':h')
   else
     return vim.fn.system('which node'):gsub('[\n\r]*$', ''):gsub('/[^/]+$', '/')
   end

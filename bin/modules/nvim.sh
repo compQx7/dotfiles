@@ -11,5 +11,5 @@ if ! command -v nvim >/dev/null 2>&1; then
 fi
 
 mkdir -p "$HOME/.config"
-link_file "$DOTFILES_DIR/vim/nvim" "$HOME/.config/nvim"
+link_file "$DOTFILES_DIR/editor/nvim" "$HOME/.config/nvim"
 
