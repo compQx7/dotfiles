@@ -1,8 +1,6 @@
 -- local is_windows = vim.loop.os_uname().sysname == 'Windows'
 
-require('core.options')
-require('core.autocmds')
-require('core.keymaps')
+require('core')
 
 if vim.loop.os_uname().sysname == 'Windows_NT' then
   local pwsh_options = {
