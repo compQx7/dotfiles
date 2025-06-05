@@ -33,16 +33,16 @@ link_file() {
 
 	if [ -L "$dest" ]; then
 		if [ "$(readlink "$dest")" = "$src" ]; then
-			echo "  Symlink $dest already points to $src, skipping"
+			log_info "  Symlink $dest already points to $src, skipping"
 		else
-			echo "  Overwriting symlink $dest"
+			log_info "  Overwriting symlink $dest"
 			rm "$dest"
 			ln -s "$src" "$dest"
 		fi
 	elif [ -e "$dest" ]; then
-		echo "  Skipping $dest (already exists and is not a symlink)"
+		log_warn "  Skipping $dest (already exists and is not a symlink)"
 	else
-		echo "  Linking $dest → $src"
+		log_info "  Linking $dest → $src"
 		ln -s "$src" "$dest"
 	fi
 }
