@@ -1,8 +1,8 @@
--- local is_windows = vim.loop.os_uname().sysname == 'Windows'
+local is_windows = require('utils').is_windows
 
 require('core')
 
-if vim.loop.os_uname().sysname == 'Windows_NT' then
+if is_windows() then
   local pwsh_options = {
     shell = vim.fn.executable('pwsh') == 1 and 'pwsh' or 'powershell',
     shellcmdflag = '-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;',

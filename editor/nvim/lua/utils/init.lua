@@ -2,9 +2,12 @@
 
 local M = {}
 
--- local is_vscode = vim.g.vscode
 function M.is_vscode()
   return vim.g.vscode
+end
+
+function M.is_windows()
+  return vim.loop.os_uname().sysname == 'Windows_NT'
 end
 
 -- Searches for a specified file by traversing up the directory tree from the current buffer's directory.
@@ -73,8 +76,7 @@ function M.get_latest_node_bin_path()
       return latest_node_path
     end
   end
-  local uname = vim.loop.os_uname().sysname
-  if uname == 'Windows_NT' then
+  if M.is_windows() then
     local node_path = vim.fn.system('(Get-Command node).Source'):gsub('[\n\r]*$', '')
     return vim.fn.fnamemodify(node_path, ':h')
   else
@@ -83,3 +85,4 @@ function M.get_latest_node_bin_path()
 end
 
 return M
+
