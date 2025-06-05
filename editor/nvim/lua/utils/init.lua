@@ -85,4 +85,3 @@ function M.get_latest_node_bin_path()
 end
 
 return M
-
