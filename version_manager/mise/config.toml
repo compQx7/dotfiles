@@ -2,9 +2,9 @@
 node = "20.12.2"
 rust = "1.86.0"
 python = "3.12"
-stylua = "latest"
-rust-analyzer = "latest"
-lua-language-server = "latest"
+stylua = "2.1.0"
+rust-analyzer = "2025-05-26"
+lua-language-server = "3.14.0"
 
 # [settings]
 # idiomatic_version_file_enable_tools = []
