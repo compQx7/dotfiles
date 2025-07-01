@@ -13,6 +13,7 @@ local plug = {
       -- task_list = {
       -- 	direction = 'right', -- Task List Direction
       -- },
+      top_down = false,
     })
     vim.notify = require('notify')
   end,
