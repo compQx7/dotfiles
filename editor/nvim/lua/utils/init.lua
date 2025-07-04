@@ -10,12 +10,17 @@ function M.is_windows()
   return vim.loop.os_uname().sysname == 'Windows_NT'
 end
 
+function M.is_wsl()
+  return vim.loop.os_uname().release:lower():find('microsoft') ~= nil
+end
+
 function M.get_browser_path()
-  -- TODO: Needs to be fixed as it depends on the environment. Extract to a configuration file?
   if M.is_windows then
     return vim.fn.expand('~/windows/scoop/apps/googlechrome/current/chrome.exe')
-  else
+  elseif M.is_wsl() then
     return vim.fn.expand('~/scoop/apps/googlechrome/current/chrome.exe')
+  else
+    return "firefox"
   end
 end
 
