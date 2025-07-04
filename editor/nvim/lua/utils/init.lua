@@ -10,6 +10,15 @@ function M.is_windows()
   return vim.loop.os_uname().sysname == 'Windows_NT'
 end
 
+function M.get_browser_path()
+  -- TODO: Needs to be fixed as it depends on the environment. Extract to a configuration file?
+  if M.is_windows then
+    return vim.fn.expand('~/windows/scoop/apps/googlechrome/current/chrome.exe')
+  else
+    return vim.fn.expand('~/scoop/apps/googlechrome/current/chrome.exe')
+  end
+end
+
 -- Searches for a specified file by traversing up the directory tree from the current buffer's directory.
 -- @param file_name The name of the file to search for.
 -- @param include_file_name Boolean indicating whether to include the file name in the returned path.
